@@ -47,21 +47,31 @@ const FeaturesSection = () => {
         {/* Features Grid */}
         <div 
           ref={gridRef as React.RefObject<HTMLDivElement>}
-          className={`grid md:grid-cols-2 lg:grid-cols-4 gap-8 scroll-stagger ${gridVisible ? 'visible' : ''}`}
+          className="grid md:grid-cols-2 lg:grid-cols-4 gap-8"
         >
           {features.map((feature, index) => (
             <div
               key={feature.title}
-              className="group p-8 bg-background border-2 border-transparent hover:border-foreground transition-all duration-300"
-              style={{ animationDelay: `${index * 100}ms` }}
+              className={`group p-8 bg-background border-2 border-transparent hover:border-foreground transition-all duration-500 scroll-pop-up ${gridVisible ? 'visible' : ''}`}
+              style={{ transitionDelay: `${index * 100}ms` }}
             >
-              <div className="w-16 h-16 bg-foreground text-background flex items-center justify-center mb-6 group-hover:bg-primary transition-colors">
-                <feature.icon className="h-8 w-8" />
+              {/* Icon with bounce animation */}
+              <div 
+                className={`w-16 h-16 bg-foreground text-background flex items-center justify-center mb-6 group-hover:bg-primary transition-all duration-500 ${gridVisible ? 'rotate-0 scale-100' : 'rotate-12 scale-0'}`}
+                style={{ transitionDelay: `${index * 100 + 200}ms` }}
+              >
+                <feature.icon className="h-8 w-8 transition-transform duration-300 group-hover:scale-110" />
               </div>
-              <h3 className="font-display text-2xl text-foreground mb-3">
+              <h3 
+                className={`font-display text-2xl text-foreground mb-3 transition-all duration-500 ${gridVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-4'}`}
+                style={{ transitionDelay: `${index * 100 + 300}ms` }}
+              >
                 {feature.title}
               </h3>
-              <p className="font-body text-muted-foreground leading-relaxed">
+              <p 
+                className={`font-body text-muted-foreground leading-relaxed transition-all duration-500 ${gridVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
+                style={{ transitionDelay: `${index * 100 + 400}ms` }}
+              >
                 {feature.description}
               </p>
             </div>

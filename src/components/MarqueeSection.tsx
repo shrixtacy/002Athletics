@@ -13,13 +13,13 @@ const MarqueeSection = () => {
   ];
 
   return (
-    <section className="bg-foreground text-background py-4 overflow-hidden">
+    <section className="relative -rotate-2 -mx-4 bg-foreground text-background py-6 overflow-hidden">
       <div className="flex whitespace-nowrap">
         <div className="flex animate-[marquee_20s_linear_infinite]">
           {[...items, ...items].map((item, index) => (
             <span
               key={index}
-              className="font-display text-lg tracking-wider mx-6"
+              className="font-display text-2xl tracking-wider mx-8"
             >
               {item}
             </span>
@@ -29,7 +29,7 @@ const MarqueeSection = () => {
           {[...items, ...items].map((item, index) => (
             <span
               key={index}
-              className="font-display text-lg tracking-wider mx-6"
+              className="font-display text-2xl tracking-wider mx-8"
             >
               {item}
             </span>

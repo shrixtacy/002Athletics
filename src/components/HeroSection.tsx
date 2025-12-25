@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, ChevronDown } from 'lucide-react';
-import heroPaddle from '@/assets/hero-paddle.jpg';
 
 const HeroSection = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -14,18 +13,10 @@ const HeroSection = () => {
   
   return (
     <section className="relative min-h-screen flex items-center bg-background overflow-hidden">
-      {/* Background Pattern */}
-      <div className="absolute inset-0 pattern-dots opacity-50" />
-      
-      {/* Decorative Elements */}
-      <div className="absolute top-20 left-10 w-32 h-32 border-2 border-primary/20 rounded-full animate-spin-slow" />
-      <div className="absolute bottom-20 right-10 w-48 h-48 border-2 border-foreground/10 rotate-45" />
-      <div className="absolute top-1/3 right-1/4 w-4 h-4 bg-primary rounded-full animate-bounce-subtle" />
-      
       <div className="container mx-auto px-6 pt-24 pb-12">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <div className="flex flex-col items-center text-center">
           {/* Content */}
-          <div className="relative z-10">
+          <div className="relative z-10 max-w-4xl">
             {/* Badge */}
             <div 
               className={`inline-flex items-center gap-2 px-4 py-2 bg-beige border border-border mb-8 transition-all duration-700 ${
@@ -55,7 +46,7 @@ const HeroSection = () => {
 
             {/* Subtitle */}
             <p 
-              className={`font-body text-lg text-muted-foreground max-w-md mb-8 transition-all duration-700 delay-500 ${
+              className={`font-body text-lg text-muted-foreground max-w-2xl mx-auto mb-8 transition-all duration-700 delay-500 ${
                 isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
               }`}
             >
@@ -65,7 +56,7 @@ const HeroSection = () => {
 
             {/* CTA Buttons */}
             <div 
-              className={`flex flex-wrap gap-4 transition-all duration-700 delay-700 ${
+              className={`flex flex-wrap justify-center gap-4 transition-all duration-700 delay-700 ${
                 isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
               }`}
             >
@@ -80,7 +71,7 @@ const HeroSection = () => {
 
             {/* Stats */}
             <div 
-              className={`flex gap-12 mt-12 pt-8 border-t border-border transition-all duration-700 delay-1000 ${
+              className={`flex justify-center gap-12 mt-12 pt-8 border-t border-border transition-all duration-700 delay-1000 ${
                 isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
               }`}
             >
@@ -94,31 +85,6 @@ const HeroSection = () => {
                   <div className="font-body text-sm text-muted-foreground uppercase tracking-wider">{stat.label}</div>
                 </div>
               ))}
-            </div>
-          </div>
-
-          {/* Hero Image */}
-          <div 
-            className={`relative transition-all duration-1000 delay-300 ${
-              isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
-            }`}
-          >
-            <div className="relative">
-              {/* Image Frame */}
-              <div className="absolute -inset-4 bg-beige -z-10 transform rotate-3" />
-              <div className="absolute -inset-4 border-2 border-foreground -z-10 transform -rotate-2" />
-              
-              <img
-                src={heroPaddle}
-                alt="Premium Pickleball Paddle"
-                className="w-full h-auto object-cover"
-              />
-              
-              {/* Floating Tag */}
-              <div className="absolute -bottom-6 -left-6 bg-primary text-primary-foreground px-6 py-4">
-                <div className="font-display text-2xl">NEW</div>
-                <div className="font-body text-xs uppercase tracking-wider">2024 Collection</div>
-              </div>
             </div>
           </div>
         </div>

@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import logo from '@/assets/002-logo.png';
 import { Menu, X, ShoppingCart } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
@@ -23,14 +24,20 @@ const Navbar = () => {
     >
       <div
         className={`transition-all duration-700 ease-custom ${isScrolled
-            ? `mx-auto max-w-4xl backdrop-blur-md border border-border shadow-lg px-6 py-3 ${isMobileMenuOpen ? 'rounded-2xl bg-background' : 'rounded-full bg-background/95'}`
-            : `container mx-auto px-6 py-4 ${isMobileMenuOpen ? 'bg-background' : 'bg-transparent'}`
+          ? `mx-auto max-w-4xl backdrop-blur-md border border-border shadow-lg px-6 py-3 ${isMobileMenuOpen ? 'rounded-2xl bg-background' : 'rounded-full bg-background/95'}`
+          : `container mx-auto px-6 py-4 ${isMobileMenuOpen ? 'bg-background' : 'bg-transparent'}`
           }`}
       >
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <a href="/" className="font-display text-3xl tracking-wider text-foreground hover:text-primary transition-colors">
-            PICKLE<span className="text-primary">PRO</span>
+          <a href="/" className="flex items-center gap-3 transition-opacity hover:opacity-80">
+            <img src={logo} alt="002Athletics" className="h-10 w-auto" />
+            <span
+              className={`font-display text-2xl tracking-wider text-foreground whitespace-nowrap transition-all duration-700 ease-custom 
+                ${isScrolled ? 'w-0 opacity-0 overflow-hidden' : 'w-auto opacity-100'}`}
+            >
+              002ATHLETICS
+            </span>
           </a>
 
           {/* Desktop Navigation */}

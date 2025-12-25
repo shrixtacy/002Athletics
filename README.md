@@ -1,4 +1,4 @@
-# PicklePro / Court Chic
+# 002Athletics
 
 Premium Pickleball Equipment e-commerce website.
 

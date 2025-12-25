@@ -14,7 +14,7 @@ const Footer = () => {
   const socialIcons = [Instagram, Twitter, Facebook, Youtube];
 
   return (
-    <footer 
+    <footer
       ref={footerRef as React.RefObject<HTMLElement>}
       className="bg-foreground text-background"
     >
@@ -23,30 +23,30 @@ const Footer = () => {
         <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-12">
           {/* Brand Column */}
           <div className="lg:col-span-2">
-            <a 
-              href="/" 
+            <a
+              href="/"
               className={`font-display text-4xl tracking-wider inline-block transition-all duration-700 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8'}`}
             >
-              PICKLE<span className="text-primary">PRO</span>
+              002<span className="text-primary">ATHLETICS</span>
             </a>
-            <p 
+            <p
               className={`font-body text-background/60 mt-4 max-w-sm leading-relaxed transition-all duration-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
               style={{ transitionDelay: '200ms' }}
             >
-              Premium pickleball equipment for players who demand excellence. 
+              Premium pickleball equipment for players who demand excellence.
               Elevate your game with professional-grade gear.
             </p>
 
             {/* Contact Info */}
             <div className="mt-8 space-y-3">
               {[
-                { icon: Mail, text: 'hello@picklepro.com', href: 'mailto:hello@picklepro.com' },
+                { icon: Mail, text: 'hello@002athletics.com', href: 'mailto:hello@002athletics.com' },
                 { icon: Phone, text: '1-800-123-4567', href: 'tel:+18001234567' },
                 { icon: MapPin, text: 'Austin, Texas', href: null },
               ].map((item, index) => (
-                <a 
+                <a
                   key={item.text}
-                  href={item.href || '#'} 
+                  href={item.href || '#'}
                   className={`flex items-center gap-3 text-background/60 hover:text-primary transition-all duration-300 hover:translate-x-1 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-4'}`}
                   style={{ transitionDelay: `${300 + index * 100}ms` }}
                 >
@@ -64,7 +64,7 @@ const Footer = () => {
             { title: 'COMPANY', links: footerLinks.company },
           ].map((column, colIndex) => (
             <div key={column.title}>
-              <h4 
+              <h4
                 className={`font-display text-xl mb-6 transition-all duration-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4'}`}
                 style={{ transitionDelay: `${400 + colIndex * 100}ms` }}
               >
@@ -72,13 +72,13 @@ const Footer = () => {
               </h4>
               <ul className="space-y-3">
                 {column.links.map((link, linkIndex) => (
-                  <li 
+                  <li
                     key={link}
                     className={`transition-all duration-300 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-4'}`}
                     style={{ transitionDelay: `${500 + colIndex * 100 + linkIndex * 50}ms` }}
                   >
-                    <a 
-                      href="#" 
+                    <a
+                      href="#"
                       className="font-body text-sm text-background/60 hover:text-primary transition-all duration-300 hover:translate-x-1 inline-block"
                     >
                       {link}
@@ -96,11 +96,11 @@ const Footer = () => {
         <div className="container mx-auto px-6 py-6">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
             {/* Copyright */}
-            <p 
+            <p
               className={`font-body text-sm text-background/60 transition-all duration-500 ${isVisible ? 'opacity-100' : 'opacity-0'}`}
               style={{ transitionDelay: '800ms' }}
             >
-              © {currentYear} PicklePro. All rights reserved.
+              © {currentYear} 002Athletics. All rights reserved.
             </p>
 
             {/* Social Links */}
@@ -118,7 +118,7 @@ const Footer = () => {
             </div>
 
             {/* Legal Links */}
-            <div 
+            <div
               className={`flex items-center gap-6 transition-all duration-500 ${isVisible ? 'opacity-100' : 'opacity-0'}`}
               style={{ transitionDelay: '1000ms' }}
             >

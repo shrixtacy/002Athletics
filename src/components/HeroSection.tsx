@@ -12,25 +12,25 @@ const HeroSection = () => {
   const headingText = "DOMINATE THE COURT";
   
   return (
-    <section className="relative min-h-screen flex items-center bg-background overflow-hidden">
-      <div className="container mx-auto px-6 pt-24 pb-12">
+    <section className="relative min-h-screen flex items-center bg-background overflow-x-hidden">
+      <div className="container mx-auto px-4 sm:px-6 pt-24 pb-12 w-full max-w-full">
         <div className="flex flex-col items-center text-center">
           {/* Content */}
-          <div className="relative z-10 max-w-4xl">
+          <div className="relative z-10 w-full max-w-4xl px-2">
             {/* Badge */}
             <div 
-              className={`inline-flex items-center gap-2 px-4 py-2 bg-beige border border-border mb-8 transition-all duration-700 ${
+              className={`inline-flex items-center gap-2 px-3 sm:px-4 py-2 bg-beige border border-border mb-6 sm:mb-8 transition-all duration-700 ${
                 isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
               }`}
             >
               <span className="w-2 h-2 bg-primary rounded-full animate-pulse" />
-              <span className="font-body text-xs uppercase tracking-widest text-foreground/70">
+              <span className="font-body text-[10px] sm:text-xs uppercase tracking-widest text-foreground/70">
                 Premium Pickleball Gear
               </span>
             </div>
 
             {/* Main Heading */}
-            <h1 className="font-display text-6xl md:text-8xl lg:text-9xl leading-none mb-6 overflow-hidden">
+            <h1 className="font-display text-4xl sm:text-6xl md:text-8xl lg:text-9xl leading-none mb-4 sm:mb-6 overflow-hidden">
               {headingText.split('').map((char, index) => (
                 <span
                   key={index}
@@ -46,7 +46,7 @@ const HeroSection = () => {
 
             {/* Subtitle */}
             <p 
-              className={`font-body text-lg text-muted-foreground max-w-2xl mx-auto mb-8 transition-all duration-700 delay-500 ${
+              className={`font-body text-sm sm:text-base md:text-lg text-muted-foreground max-w-2xl mx-auto mb-6 sm:mb-8 px-2 transition-all duration-700 delay-500 ${
                 isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
               }`}
             >
@@ -56,22 +56,22 @@ const HeroSection = () => {
 
             {/* CTA Buttons */}
             <div 
-              className={`flex flex-wrap justify-center gap-4 transition-all duration-700 delay-700 ${
+              className={`flex flex-col sm:flex-row flex-wrap justify-center gap-3 sm:gap-4 transition-all duration-700 delay-700 ${
                 isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
               }`}
             >
-              <Button variant="hero" size="xl" className="group">
+              <Button variant="hero" size="lg" className="group w-full sm:w-auto">
                 Shop Collection
-                <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+                <ArrowRight className="ml-2 h-4 w-4 sm:h-5 sm:w-5 transition-transform group-hover:translate-x-1" />
               </Button>
-              <Button variant="hero-outline" size="xl">
+              <Button variant="hero-outline" size="lg" className="w-full sm:w-auto">
                 View Catalog
               </Button>
             </div>
 
             {/* Stats */}
             <div 
-              className={`flex justify-center gap-12 mt-12 pt-8 border-t border-border transition-all duration-700 delay-1000 ${
+              className={`flex justify-center gap-6 sm:gap-12 mt-8 sm:mt-12 pt-6 sm:pt-8 border-t border-border transition-all duration-700 delay-1000 ${
                 isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
               }`}
             >
@@ -81,8 +81,8 @@ const HeroSection = () => {
                 { value: '100%', label: 'Satisfaction' },
               ].map((stat) => (
                 <div key={stat.label}>
-                  <div className="font-display text-4xl text-foreground">{stat.value}</div>
-                  <div className="font-body text-sm text-muted-foreground uppercase tracking-wider">{stat.label}</div>
+                  <div className="font-display text-2xl sm:text-4xl text-foreground">{stat.value}</div>
+                  <div className="font-body text-xs sm:text-sm text-muted-foreground uppercase tracking-wider">{stat.label}</div>
                 </div>
               ))}
             </div>

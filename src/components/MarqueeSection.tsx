@@ -13,30 +13,32 @@ const MarqueeSection = () => {
   ];
 
   return (
-    <section className="relative -rotate-2 -mx-4 bg-foreground text-background py-6 overflow-hidden">
-      <div className="flex whitespace-nowrap">
-        <div className="flex animate-[marquee_20s_linear_infinite]">
-          {[...items, ...items].map((item, index) => (
-            <span
-              key={index}
-              className="font-display text-2xl tracking-wider mx-8"
-            >
-              {item}
-            </span>
-          ))}
+    <div className="overflow-x-hidden w-full">
+      <section className="relative -rotate-2 scale-105 bg-foreground text-background py-4 sm:py-6 overflow-hidden">
+        <div className="flex whitespace-nowrap">
+          <div className="flex animate-[marquee_20s_linear_infinite]">
+            {[...items, ...items].map((item, index) => (
+              <span
+                key={index}
+                className="font-display text-lg sm:text-2xl tracking-wider mx-4 sm:mx-8"
+              >
+                {item}
+              </span>
+            ))}
+          </div>
+          <div className="flex animate-[marquee_20s_linear_infinite]">
+            {[...items, ...items].map((item, index) => (
+              <span
+                key={index}
+                className="font-display text-lg sm:text-2xl tracking-wider mx-4 sm:mx-8"
+              >
+                {item}
+              </span>
+            ))}
+          </div>
         </div>
-        <div className="flex animate-[marquee_20s_linear_infinite]">
-          {[...items, ...items].map((item, index) => (
-            <span
-              key={index}
-              className="font-display text-2xl tracking-wider mx-8"
-            >
-              {item}
-            </span>
-          ))}
-        </div>
-      </div>
-    </section>
+      </section>
+    </div>
   );
 };
 

@@ -25,7 +25,7 @@ const Navbar = () => {
       <div
         className={`transition-all duration-500 ease-out ${
           isScrolled
-            ? 'container mx-auto max-w-5xl bg-background/95 backdrop-blur-md border border-border shadow-lg rounded-full px-6 py-3'
+            ? 'mx-auto max-w-3xl bg-background/95 backdrop-blur-md border border-border shadow-lg rounded-full px-5 py-2'
             : 'container mx-auto px-6 py-4 bg-transparent'
         }`}
       >

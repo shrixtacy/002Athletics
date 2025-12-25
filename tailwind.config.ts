@@ -107,6 +107,9 @@ export default {
         "slide-in-right": "slide-in-right 0.5s ease-out",
         "scale-in": "scale-in 0.3s ease-out",
       },
+      transitionTimingFunction: {
+        custom: "cubic-bezier(0.4, 0, 0.2, 1)",
+      },
     },
   },
   plugins: [require("tailwindcss-animate")],

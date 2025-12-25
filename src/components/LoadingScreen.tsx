@@ -10,12 +10,21 @@ const LoadingScreen = ({ onComplete }: LoadingScreenProps) => {
 
   const handleVideoEnd = () => {
     setIsVisible(false);
-    setTimeout(onComplete, 500);
+    setTimeout(onComplete, 300);
+  };
+
+  const handleTimeUpdate = (e: React.SyntheticEvent<HTMLVideoElement>) => {
+    const video = e.currentTarget;
+    // End video 1 second before it finishes
+    if (video.duration && video.currentTime >= video.duration - 1) {
+      video.pause();
+      handleVideoEnd();
+    }
   };
 
   return (
     <div
-      className={`fixed inset-0 z-50 bg-background flex items-center justify-center transition-opacity duration-500 ${
+      className={`fixed inset-0 z-50 bg-background flex items-center justify-center transition-opacity duration-300 ${
         isVisible ? 'opacity-100' : 'opacity-0 pointer-events-none'
       }`}
     >
@@ -23,6 +32,7 @@ const LoadingScreen = ({ onComplete }: LoadingScreenProps) => {
         autoPlay
         muted
         playsInline
+        onTimeUpdate={handleTimeUpdate}
         onEnded={handleVideoEnd}
         className="w-full h-full object-contain max-w-2xl"
       >

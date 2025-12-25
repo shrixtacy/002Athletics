@@ -26,6 +26,7 @@ const categories = [
 const CategoriesSection = () => {
   const { ref: headerRef, isVisible: headerVisible } = useScrollAnimation(0.2);
   const { ref: gridRef, isVisible: gridVisible } = useScrollAnimation(0.1);
+  const { ref: ctaRef, isVisible: ctaVisible } = useScrollAnimation(0.3);
 
   return (
     <section className="py-24 bg-foreground text-background pattern-dots-lg">
@@ -46,12 +47,13 @@ const CategoriesSection = () => {
         {/* Categories Grid */}
         <div 
           ref={gridRef as React.RefObject<HTMLDivElement>}
-          className={`grid md:grid-cols-2 lg:grid-cols-4 gap-6 scroll-stagger ${gridVisible ? 'visible' : ''}`}
+          className="grid md:grid-cols-2 lg:grid-cols-4 gap-6"
         >
-          {categories.map((category) => (
+          {categories.map((category, index) => (
             <div
               key={category.title}
-              className="group relative aspect-square bg-background/5 border border-background/20 overflow-hidden cursor-pointer hover:border-primary transition-colors"
+              className={`group relative aspect-square bg-background/5 border border-background/20 overflow-hidden cursor-pointer hover:border-primary transition-all duration-500 ${gridVisible ? 'opacity-100 translate-y-0 rotate-0' : 'opacity-0 translate-y-8 rotate-3'}`}
+              style={{ transitionDelay: `${index * 120}ms` }}
             >
               {/* Background Pattern */}
               <div className="absolute inset-0 pattern-grid opacity-20" />
@@ -59,28 +61,43 @@ const CategoriesSection = () => {
               {/* Content */}
               <div className="relative h-full p-8 flex flex-col justify-between">
                 <div>
-                  <h3 className="font-display text-4xl text-background group-hover:text-primary transition-colors">
+                  <h3 
+                    className={`font-display text-4xl text-background group-hover:text-primary transition-all duration-500 ${gridVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8'}`}
+                    style={{ transitionDelay: `${index * 120 + 150}ms` }}
+                  >
                     {category.title}
                   </h3>
-                  <p className="font-body text-sm text-background/60 mt-2">
+                  <p 
+                    className={`font-body text-sm text-background/60 mt-2 transition-all duration-500 ${gridVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-4'}`}
+                    style={{ transitionDelay: `${index * 120 + 250}ms` }}
+                  >
                     {category.count} Products
                   </p>
                 </div>
                 
-                <div className="flex items-center gap-2 text-background/60 group-hover:text-primary transition-colors">
+                <div 
+                  className={`flex items-center gap-2 text-background/60 group-hover:text-primary transition-all duration-500 ${gridVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
+                  style={{ transitionDelay: `${index * 120 + 350}ms` }}
+                >
                   <span className="font-body text-sm uppercase tracking-wider">Shop Now</span>
                   <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-2" />
                 </div>
               </div>
 
-              {/* Decorative Circle */}
-              <div className="absolute -bottom-12 -right-12 w-32 h-32 border border-background/20 rounded-full group-hover:border-primary group-hover:scale-110 transition-all duration-500" />
+              {/* Decorative Circle with animation */}
+              <div 
+                className={`absolute -bottom-12 -right-12 w-32 h-32 border border-background/20 rounded-full group-hover:border-primary group-hover:scale-110 transition-all duration-700 ${gridVisible ? 'scale-100 opacity-100' : 'scale-0 opacity-0'}`}
+                style={{ transitionDelay: `${index * 120 + 200}ms` }}
+              />
             </div>
           ))}
         </div>
 
         {/* CTA */}
-        <div className="text-center mt-16">
+        <div 
+          ref={ctaRef as React.RefObject<HTMLDivElement>}
+          className={`text-center mt-16 scroll-pop-up ${ctaVisible ? 'visible' : ''}`}
+        >
           <Button variant="purple-outline" size="xl" className="border-background text-background hover:bg-background hover:text-foreground">
             View Full Catalog
           </Button>

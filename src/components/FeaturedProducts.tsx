@@ -1,3 +1,4 @@
+import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import { Button } from '@/components/ui/button';
 import { ShoppingCart, Eye } from 'lucide-react';
 import paddle1 from '@/assets/paddle-1.jpg';
@@ -38,11 +39,35 @@ const products = [
 ];
 
 const FeaturedProducts = () => {
+  const { ref: headerRef, isVisible: headerVisible } = useScrollAnimation(0.2);
+  const { ref: gridRef, isVisible: gridVisible } = useScrollAnimation(0.1);
+
   return (
     <section id="paddles" className="py-24 bg-background">
       <div className="container mx-auto px-6">
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-16">
+        <div 
+          ref={headerRef as React.RefObject<HTMLDivElement>}
+          className={`flex flex-col md:flex-row md:items-end md:justify-between mb-16 scroll-blur-in ${headerVisible ? 'visible' : ''}`}
+        >
+          <div>
+            <span className="font-body text-sm uppercase tracking-widest text-primary mb-4 block">
+              Featured Collection
+            </span>
+            <h2 className="font-display text-5xl md:text-7xl text-foreground">
+              TOP SELLERS
+            </h2>
+          </div>
+          <Button variant="hero-outline" className="mt-6 md:mt-0">
+            View All Products
+          </Button>
+        </div>
+
+        {/* Products Grid */}
+        <div 
+          ref={gridRef as React.RefObject<HTMLDivElement>}
+          className={`grid md:grid-cols-2 lg:grid-cols-3 gap-8 scroll-stagger ${gridVisible ? 'visible' : ''}`}
+        >
           <div>
             <span className="font-body text-sm uppercase tracking-widest text-primary mb-4 block">
               Featured Collection

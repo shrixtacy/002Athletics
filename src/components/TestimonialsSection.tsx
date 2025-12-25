@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import { ChevronLeft, ChevronRight, Star } from 'lucide-react';
 
 const testimonials = [
@@ -27,6 +28,8 @@ const testimonials = [
 
 const TestimonialsSection = () => {
   const [activeIndex, setActiveIndex] = useState(0);
+  const { ref: leftRef, isVisible: leftVisible } = useScrollAnimation(0.2);
+  const { ref: rightRef, isVisible: rightVisible } = useScrollAnimation(0.2);
 
   const nextTestimonial = () => {
     setActiveIndex((prev) => (prev + 1) % testimonials.length);
@@ -41,7 +44,10 @@ const TestimonialsSection = () => {
       <div className="container mx-auto px-6">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Left Side - Header */}
-          <div>
+          <div 
+            ref={leftRef as React.RefObject<HTMLDivElement>}
+            className={`scroll-slide-left ${leftVisible ? 'visible' : ''}`}
+          >
             <span className="font-body text-sm uppercase tracking-widest text-primary mb-4 block">
               Testimonials
             </span>
@@ -71,7 +77,10 @@ const TestimonialsSection = () => {
           </div>
 
           {/* Right Side - Testimonial Card */}
-          <div className="relative">
+          <div 
+            ref={rightRef as React.RefObject<HTMLDivElement>}
+            className={`relative scroll-slide-right ${rightVisible ? 'visible' : ''}`}
+          >
             {/* Background Decoration */}
             <div className="absolute -top-8 -right-8 w-full h-full bg-beige -z-10" />
             

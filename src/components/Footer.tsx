@@ -1,7 +1,9 @@
+import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import { Instagram, Twitter, Facebook, Youtube, Mail, Phone, MapPin } from 'lucide-react';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
+  const { ref: footerRef, isVisible } = useScrollAnimation(0.1);
 
   const footerLinks = {
     shop: ['Paddles', 'Balls', 'Accessories', 'Apparel', 'Bundles'],
@@ -10,7 +12,10 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-foreground text-background">
+    <footer 
+      ref={footerRef as React.RefObject<HTMLElement>}
+      className={`bg-foreground text-background scroll-blur-in ${isVisible ? 'visible' : ''}`}
+    >
       {/* Main Footer */}
       <div className="container mx-auto px-6 py-16">
         <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-12">

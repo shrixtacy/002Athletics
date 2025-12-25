@@ -1,3 +1,4 @@
+import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import { Button } from '@/components/ui/button';
 import { ArrowRight } from 'lucide-react';
 import pickleball from '@/assets/pickleball.jpg';
@@ -23,11 +24,17 @@ const categories = [
 ];
 
 const CategoriesSection = () => {
+  const { ref: headerRef, isVisible: headerVisible } = useScrollAnimation(0.2);
+  const { ref: gridRef, isVisible: gridVisible } = useScrollAnimation(0.1);
+
   return (
     <section className="py-24 bg-foreground text-background pattern-dots-lg">
       <div className="container mx-auto px-6">
         {/* Section Header */}
-        <div className="text-center mb-16">
+        <div 
+          ref={headerRef as React.RefObject<HTMLDivElement>}
+          className={`text-center mb-16 scroll-fade-rotate ${headerVisible ? 'visible' : ''}`}
+        >
           <span className="font-body text-sm uppercase tracking-widest text-primary mb-4 block">
             Shop By Category
           </span>
@@ -37,12 +44,14 @@ const CategoriesSection = () => {
         </div>
 
         {/* Categories Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {categories.map((category, index) => (
+        <div 
+          ref={gridRef as React.RefObject<HTMLDivElement>}
+          className={`grid md:grid-cols-2 lg:grid-cols-4 gap-6 scroll-stagger ${gridVisible ? 'visible' : ''}`}
+        >
+          {categories.map((category) => (
             <div
               key={category.title}
               className="group relative aspect-square bg-background/5 border border-background/20 overflow-hidden cursor-pointer hover:border-primary transition-colors"
-              style={{ animationDelay: `${index * 100}ms` }}
             >
               {/* Background Pattern */}
               <div className="absolute inset-0 pattern-grid opacity-20" />

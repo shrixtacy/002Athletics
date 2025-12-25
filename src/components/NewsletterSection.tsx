@@ -1,10 +1,12 @@
 import { useState } from 'react';
+import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, Check } from 'lucide-react';
 
 const NewsletterSection = () => {
   const [email, setEmail] = useState('');
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const { ref: sectionRef, isVisible } = useScrollAnimation(0.2);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -17,7 +19,10 @@ const NewsletterSection = () => {
   return (
     <section className="py-24 bg-primary text-primary-foreground">
       <div className="container mx-auto px-6">
-        <div className="max-w-4xl mx-auto text-center">
+        <div 
+          ref={sectionRef as React.RefObject<HTMLDivElement>}
+          className={`max-w-4xl mx-auto text-center scroll-pop-up ${isVisible ? 'visible' : ''}`}
+        >
           {/* Header */}
           <h2 className="font-display text-5xl md:text-7xl mb-6">
             JOIN THE CLUB

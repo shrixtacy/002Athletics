@@ -1,3 +1,5 @@
+import { useState } from 'react';
+import LoadingScreen from '@/components/LoadingScreen';
 import Navbar from '@/components/Navbar';
 import HeroSection from '@/components/HeroSection';
 import AboutSection from '@/components/AboutSection';
@@ -10,19 +12,24 @@ import NewsletterSection from '@/components/NewsletterSection';
 import Footer from '@/components/Footer';
 
 const Index = () => {
+  const [isLoading, setIsLoading] = useState(true);
+
   return (
-    <div className="min-h-screen bg-background overflow-x-hidden">
-      <Navbar />
-      <HeroSection />
-      <AboutSection />
-      <MarqueeSection />
-      <FeaturedProducts />
-      <FeaturesSection />
-      <CategoriesSection />
-      <TestimonialsSection />
-      <NewsletterSection />
-      <Footer />
-    </div>
+    <>
+      {isLoading && <LoadingScreen onComplete={() => setIsLoading(false)} />}
+      <div className={`min-h-screen bg-background overflow-x-hidden ${isLoading ? 'opacity-0' : 'opacity-100'} transition-opacity duration-500`}>
+        <Navbar />
+        <HeroSection />
+        <AboutSection />
+        <MarqueeSection />
+        <FeaturedProducts />
+        <FeaturesSection />
+        <CategoriesSection />
+        <TestimonialsSection />
+        <NewsletterSection />
+        <Footer />
+      </div>
+    </>
   );
 };
 

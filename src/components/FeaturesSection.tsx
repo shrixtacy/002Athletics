@@ -1,3 +1,4 @@
+import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import { Zap, Shield, Award, Truck } from 'lucide-react';
 
 const features = [
@@ -24,11 +25,17 @@ const features = [
 ];
 
 const FeaturesSection = () => {
+  const { ref: headerRef, isVisible: headerVisible } = useScrollAnimation(0.2);
+  const { ref: gridRef, isVisible: gridVisible } = useScrollAnimation(0.1);
+
   return (
     <section className="py-24 bg-beige pattern-lines">
       <div className="container mx-auto px-6">
         {/* Section Header */}
-        <div className="text-center mb-16">
+        <div 
+          ref={headerRef as React.RefObject<HTMLDivElement>}
+          className={`text-center mb-16 scroll-flip-in ${headerVisible ? 'visible' : ''}`}
+        >
           <span className="font-body text-sm uppercase tracking-widest text-primary mb-4 block">
             Why Choose Us
           </span>
@@ -38,7 +45,10 @@ const FeaturesSection = () => {
         </div>
 
         {/* Features Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div 
+          ref={gridRef as React.RefObject<HTMLDivElement>}
+          className={`grid md:grid-cols-2 lg:grid-cols-4 gap-8 scroll-stagger ${gridVisible ? 'visible' : ''}`}
+        >
           {features.map((feature, index) => (
             <div
               key={feature.title}

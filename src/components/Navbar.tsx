@@ -18,14 +18,14 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-out ${
-        isScrolled ? 'py-2 px-4' : 'py-0 px-0'
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-700 ease-[cubic-bezier(0.4,0,0.2,1)] ${
+        isScrolled ? 'py-3 px-6' : 'py-0 px-0'
       }`}
     >
       <div
-        className={`transition-all duration-500 ease-out ${
+        className={`transition-all duration-700 ease-[cubic-bezier(0.4,0,0.2,1)] ${
           isScrolled
-            ? 'mx-auto max-w-3xl bg-background/95 backdrop-blur-md border border-border shadow-lg rounded-full px-5 py-2'
+            ? 'mx-auto max-w-4xl bg-background/95 backdrop-blur-md border border-border shadow-lg rounded-full px-6 py-3'
             : 'container mx-auto px-6 py-4 bg-transparent'
         }`}
       >

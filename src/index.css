@@ -78,8 +78,10 @@
     @apply border-border;
   }
 
-  html {
-    overflow-x: clip;
+  html,
+  body {
+    overflow-x: hidden;
+    width: 100%;
   }
 
   /* Custom Scrollbar */

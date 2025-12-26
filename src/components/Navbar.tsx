@@ -22,12 +22,12 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-700 ease-custom ${isScrolled ? 'py-3 px-2 md:px-6' : 'py-0 px-0'
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-700 ease-custom ${isScrolled ? 'py-0 md:py-3 px-0 md:px-6' : 'py-0 px-0'
         }`}
     >
       <div
         className={`transition-all duration-700 ease-custom ${isScrolled
-          ? `mx-auto max-w-4xl backdrop-blur-md border border-border shadow-lg px-4 md:px-6 py-3 ${isMobileMenuOpen ? 'rounded-2xl bg-background' : 'rounded-full bg-background/95'}`
+          ? `w-full md:mx-auto md:max-w-4xl backdrop-blur-md md:border-t md:border-l md:border-r border-b border-border shadow-lg px-4 md:px-6 py-3 rounded-none md:rounded-full ${isMobileMenuOpen ? 'bg-background' : 'bg-background/95'}`
           : `container mx-auto px-6 py-4 ${isMobileMenuOpen ? 'bg-background' : 'bg-transparent'}`
           }`}
       >

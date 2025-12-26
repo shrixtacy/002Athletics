@@ -55,111 +55,50 @@ const AboutSection = () => {
         </p>
       </div>
 
-      {/* Mobile: Horizontal Carousel */}
-      <div className="md:hidden mb-24 pl-6">
-        <div className="overflow-hidden" ref={emblaRef}>
-          <div className="flex gap-4">
+      {/* Universal Horizontal Carousel */}
+      <div className="mb-24 pl-4 md:pl-0">
+        <div className="overflow-hidden md:cursor-grab active:cursor-grabbing" ref={emblaRef}>
+          <div className="flex gap-4 md:gap-8 md:px-8">
             {historyCards.map((card, index) => (
               <div
                 key={card.year}
-                className="flex-[0_0_85%] min-w-0 relative"
+                className="flex-[0_0_85%] md:flex-[0_0_45%] lg:flex-[0_0_35%] min-w-0 relative"
               >
                 <div
-                  className={`${card.color} w-full h-full border-2 border-foreground shadow-[4px_4px_0px_0px_hsl(var(--foreground))] p-6 rounded-none`}
+                  className={`${card.color} w-full h-full border-2 border-foreground shadow-[4px_4px_0px_0px_hsl(var(--foreground))] md:shadow-[8px_8px_0px_0px_hsl(var(--foreground))] p-6 md:p-10 transition-transform duration-300 hover:-translate-y-2`}
                 >
-                  <div className="flex flex-col h-full justify-between">
-                    <div className="relative mb-6">
+                  <div className="flex flex-col h-full justify-between gap-6">
+                    <div className="relative">
                       <div
-                        className={`font-display text-5xl leading-none ${card.textLight ? 'text-primary-foreground/20' : 'text-foreground/10'
+                        className={`font-display text-5xl md:text-7xl leading-none ${card.textLight ? 'text-primary-foreground/20' : 'text-foreground/10'
                           }`}
                       >
                         {card.year}
                       </div>
                       <h3
-                        className={`font-display text-3xl mb-2 mt-2 ${card.textLight ? 'text-primary-foreground' : 'text-foreground'
+                        className={`font-display text-3xl md:text-4xl mb-2 mt-2 ${card.textLight ? 'text-primary-foreground' : 'text-foreground'
                           }`}
                       >
                         {card.title}
                       </h3>
                     </div>
                     <p
-                      className={`font-body text-base leading-relaxed ${card.textLight ? 'text-primary-foreground/80' : 'text-muted-foreground'
+                      className={`font-body text-base md:text-lg leading-relaxed ${card.textLight ? 'text-primary-foreground/80' : 'text-muted-foreground'
                         }`}
                     >
                       {card.description}
                     </p>
                   </div>
+                  {/* Decorative Elements */}
+                  <div
+                    className={`absolute top-4 right-4 w-4 h-4 md:w-6 md:h-6 border-2 ${card.textLight ? 'border-primary-foreground/30' : 'border-foreground/20'
+                      }`}
+                  />
                 </div>
               </div>
             ))}
           </div>
         </div>
-      </div>
-
-      {/* Desktop: Sticky Scroll Stack */}
-      <div ref={containerRef} className="relative hidden md:block">
-        {historyCards.map((card, index) => (
-          <div
-            key={card.year}
-            className="sticky top-0 min-h-screen flex items-center justify-center px-6"
-            style={{
-              zIndex: index + 1,
-              paddingTop: `${index * 20}px`,
-            }}
-          >
-            <div
-              className={`${card.color} w-full max-w-5xl mx-auto border-2 border-foreground shadow-[8px_8px_0px_0px_hsl(var(--foreground))] transition-transform duration-300`}
-              style={{
-                transform: `rotate(${index % 2 === 0 ? -1 : 1}deg)`,
-              }}
-            >
-              <div className="grid md:grid-cols-[200px_1fr] gap-8 p-12">
-                {/* Year */}
-                <div className="relative">
-                  <div
-                    className={`font-display text-9xl leading-none ${card.textLight ? 'text-primary-foreground/20' : 'text-foreground/10'
-                      }`}
-                  >
-                    {card.year}
-                  </div>
-                  <div
-                    className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 rounded-full ${card.textLight ? 'bg-primary-foreground' : 'bg-primary'
-                      }`}
-                  />
-                </div>
-
-                {/* Content */}
-                <div className="flex flex-col justify-center">
-                  <h3
-                    className={`font-display text-5xl mb-4 ${card.textLight ? 'text-primary-foreground' : 'text-foreground'
-                      }`}
-                  >
-                    {card.title}
-                  </h3>
-                  <p
-                    className={`font-body text-lg leading-relaxed ${card.textLight ? 'text-primary-foreground/80' : 'text-muted-foreground'
-                      }`}
-                  >
-                    {card.description}
-                  </p>
-                </div>
-              </div>
-
-              {/* Decorative Elements */}
-              <div
-                className={`absolute top-4 right-4 w-8 h-8 border-2 ${card.textLight ? 'border-primary-foreground/30' : 'border-foreground/20'
-                  }`}
-              />
-              <div
-                className={`absolute bottom-4 left-4 w-12 h-12 rounded-full border-2 ${card.textLight ? 'border-primary-foreground/30' : 'border-foreground/20'
-                  }`}
-              />
-            </div>
-          </div>
-        ))}
-
-        {/* Spacer for last card */}
-        <div className="h-screen" />
       </div>
 
       {/* Bottom Decoration */}

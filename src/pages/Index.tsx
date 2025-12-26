@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import LoadingScreen from '@/components/LoadingScreen';
 import Navbar from '@/components/Navbar';
+import HeroParallax from '@/components/HeroParallax';
 import HeroSection from '@/components/HeroSection';
 import AboutSection from '@/components/AboutSection';
 import MarqueeSection from '@/components/MarqueeSection';
@@ -19,6 +20,7 @@ const Index = () => {
       {isLoading && <LoadingScreen onComplete={() => setIsLoading(false)} />}
       <div className={`min-h-screen bg-background ${isLoading ? 'opacity-0' : 'opacity-100'} transition-opacity duration-500`}>
         <Navbar />
+        <HeroParallax />
         <HeroSection />
         <AboutSection />
         <MarqueeSection />

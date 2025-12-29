@@ -12,11 +12,16 @@ import TestimonialsSection from '@/components/TestimonialsSection';
 import NewsletterSection from '@/components/NewsletterSection';
 import Footer from '@/components/Footer';
 
+import SmoothScroll from '@/components/SmoothScroll';
+import CustomCursor from '@/components/CustomCursor';
+
 const Index = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   return (
     <>
+      <SmoothScroll />
+      <CustomCursor />
       {isLoading && <LoadingScreen onComplete={() => setIsLoading(false)} />}
       <div className={`min-h-screen bg-background ${isLoading ? 'opacity-0' : 'opacity-100'} transition-opacity duration-500`}>
         <Navbar />

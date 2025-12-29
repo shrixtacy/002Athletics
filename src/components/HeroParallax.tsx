@@ -5,6 +5,9 @@ import whiteLogo from '../assets/white-002-logo.png';
 import bg1 from '../assets/Gemini_Generated_Image_vnluh9vnluh9vnlu.png';
 import bg2 from '../assets/Gemini_Generated_Image_xzd0dwxzd0dwxzd0.png';
 import bg3 from '../assets/hero-bg-3.jpeg';
+import mobileBg1 from '../assets/Gemini_Generated_Image_diar0mdiar0mdiar.png';
+import mobileBg2 from '../assets/Gemini_Generated_Image_hxz049hxz049hxz0.png';
+import mobileBg3 from '../assets/Gemini_Generated_Image_qdl2v0qdl2v0qdl2.png';
 
 const HeroParallax = () => {
     const [emblaRef] = useEmblaCarousel({ loop: true, duration: 60 }, [
@@ -21,7 +24,11 @@ const HeroParallax = () => {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
-    const images = [bg1, bg2, bg3];
+    const slides = [
+        { desktop: bg1, mobile: mobileBg1 },
+        { desktop: bg2, mobile: mobileBg2 },
+        { desktop: bg3, mobile: mobileBg3 },
+    ];
 
     return (
         <div className="relative h-screen w-full overflow-hidden">
@@ -34,13 +41,16 @@ const HeroParallax = () => {
             >
                 <div className="overflow-hidden h-full" ref={emblaRef}>
                     <div className="flex h-full">
-                        {images.map((src, index) => (
+                        {slides.map((slide, index) => (
                             <div className="flex-[0_0_100%] min-w-0 relative h-full" key={index}>
-                                <img
-                                    src={src}
-                                    alt={`Hero Background ${index + 1}`}
-                                    className="w-full h-full object-cover"
-                                />
+                                <picture className="w-full h-full block">
+                                    <source media="(max-width: 768px)" srcSet={slide.mobile} />
+                                    <img
+                                        src={slide.desktop}
+                                        alt={`Hero Background ${index + 1}`}
+                                        className="w-full h-full object-cover"
+                                    />
+                                </picture>
                                 {/* Overlay for better text/logo visibility */}
                                 <div className="absolute inset-0 bg-black/30" />
                             </div>

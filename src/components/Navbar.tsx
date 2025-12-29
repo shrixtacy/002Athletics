@@ -22,16 +22,16 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-700 ease-custom ${isScrolled ? 'py-0 md:py-3 px-0 md:px-6' : 'py-0 px-0'
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-700 ease-custom ${isScrolled && !isMobileMenuOpen ? 'py-3 px-2 md:px-6' : 'py-0 px-0'
         }`}
     >
       <div
         className={`transition-all duration-700 ease-custom ${isScrolled
-          ? `w-full md:mx-auto md:max-w-4xl backdrop-blur-md md:border-t md:border-l md:border-r border-b border-border shadow-lg px-4 md:px-6 py-3 rounded-none md:rounded-full ${isMobileMenuOpen ? 'bg-background' : 'bg-background/95'}`
+          ? `mx-auto max-w-4xl backdrop-blur-md border border-border shadow-lg px-4 md:px-6 py-3 ${isMobileMenuOpen ? 'w-full rounded-none bg-background border-t-0 border-x-0' : 'w-full rounded-[2rem] bg-background/95'}`
           : `container mx-auto px-6 py-4 ${isMobileMenuOpen ? 'bg-background' : 'bg-transparent'}`
           }`}
       >
-        <div className="flex items-center justify-between">
+        <div className="relative flex items-center justify-center md:justify-between">
           {/* Logo */}
           <a href="/" className="flex items-center gap-3 transition-opacity hover:opacity-80">
             <img
@@ -77,7 +77,7 @@ const Navbar = () => {
 
           {/* Mobile Menu Button */}
           <button
-            className={`md:hidden ${isDarkText ? 'text-foreground' : 'text-white'}`}
+            className={`absolute right-0 md:hidden ${isDarkText ? 'text-foreground' : 'text-white'}`}
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
             {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}

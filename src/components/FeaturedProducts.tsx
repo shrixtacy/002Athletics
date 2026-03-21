@@ -1,40 +1,31 @@
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import { Button } from '@/components/ui/button';
-import { ShoppingCart, Eye } from 'lucide-react';
-import paddle1 from '@/assets/paddle-1.jpg';
-import paddle2 from '@/assets/paddle-2.jpg';
-import paddle3 from '@/assets/paddle-3.jpg';
+// Removed unused icons
+import { Link } from 'react-router-dom';
+import ballPreAd from '@/assets/ball-pre-ad.png';
+import ballStrAd from '@/assets/ball-str-ad.png';
 
 const products = [
   {
     id: 1,
-    name: 'Carbon Elite Pro',
+    name: 'Pro Tournament Pickleball',
     category: 'Professional',
-    price: 189,
-    originalPrice: 229,
-    image: paddle1,
+    price: 15,
+    originalPrice: 20,
+    image: ballPreAd,
     badge: 'Best Seller',
     rating: 4.9,
     reviews: 128,
   },
   {
     id: 2,
-    name: 'Vortex Series X',
-    category: 'Advanced',
-    price: 159,
-    image: paddle2,
+    name: 'Classic Training Ball',
+    category: 'Training',
+    price: 12,
+    image: ballStrAd,
     badge: 'New',
     rating: 4.8,
     reviews: 64,
-  },
-  {
-    id: 3,
-    name: 'Classic Control',
-    category: 'Intermediate',
-    price: 129,
-    image: paddle3,
-    rating: 4.7,
-    reviews: 256,
   },
 ];
 
@@ -66,12 +57,13 @@ const FeaturedProducts = () => {
         {/* Products Grid */}
         <div 
           ref={gridRef as React.RefObject<HTMLDivElement>}
-          className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
+          className="grid md:grid-cols-2 max-w-4xl mx-auto gap-8"
         >
           {products.map((product, index) => (
-            <div
+            <Link
+              to={`/product/${product.id}`}
               key={product.id}
-              className={`group relative bg-card hover-lift scroll-pop-up ${gridVisible ? 'visible' : ''}`}
+              className={`block group relative bg-card hover-lift scroll-pop-up ${gridVisible ? 'visible' : ''}`}
               style={{ transitionDelay: `${index * 150}ms` }}
             >
               {/* Badge */}
@@ -85,7 +77,7 @@ const FeaturedProducts = () => {
               )}
 
               {/* Image Container */}
-              <div className="relative overflow-hidden bg-secondary aspect-[4/5]">
+              <div className="relative overflow-hidden bg-secondary aspect-square flex justify-center items-center px-4 md:px-8">
                 <img
                   src={product.image}
                   alt={product.name}
@@ -93,15 +85,7 @@ const FeaturedProducts = () => {
                   style={{ transitionDelay: `${index * 150 + 100}ms` }}
                 />
                 
-                {/* Quick Actions */}
-                <div className="absolute inset-0 bg-foreground/0 group-hover:bg-foreground/10 transition-all duration-300 flex items-center justify-center gap-4 opacity-0 group-hover:opacity-100">
-                  <button className="w-12 h-12 bg-background text-foreground flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-all duration-300 hover:scale-110">
-                    <ShoppingCart className="h-5 w-5" />
-                  </button>
-                  <button className="w-12 h-12 bg-background text-foreground flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-all duration-300 hover:scale-110">
-                    <Eye className="h-5 w-5" />
-                  </button>
-                </div>
+                {/* Removed Quick Actions */}
               </div>
 
               {/* Product Info */}
@@ -131,7 +115,7 @@ const FeaturedProducts = () => {
                   )}
                 </div>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </div>

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import logoIntro from '@/assets/logo-intro.mp4';
+import logoIntro from '@/assets/buffering.mp4';
 
 interface LoadingScreenProps {
   onComplete: () => void;

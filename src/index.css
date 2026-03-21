@@ -84,6 +84,12 @@
     width: 100%;
   }
 
+  @media (pointer: fine) {
+    *, html, body, a, button, input, textarea, select {
+      cursor: none !important;
+    }
+  }
+
   /* Custom Scrollbar */
   ::-webkit-scrollbar {
     width: 6px;

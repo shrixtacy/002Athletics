@@ -2,10 +2,9 @@ import { useState } from 'react';
 import LoadingScreen from '@/components/LoadingScreen';
 import Navbar from '@/components/Navbar';
 import HeroParallax from '@/components/HeroParallax';
-import HeroSection from '@/components/HeroSection';
-import AboutSection from '@/components/AboutSection';
-import MarqueeSection from '@/components/MarqueeSection';
 import FeaturedProducts from '@/components/FeaturedProducts';
+import MarqueeSection from '@/components/MarqueeSection';
+import HeroSection from '@/components/HeroSection';
 import FeaturesSection from '@/components/FeaturesSection';
 import CategoriesSection from '@/components/CategoriesSection';
 import TestimonialsSection from '@/components/TestimonialsSection';
@@ -26,10 +25,9 @@ const Index = () => {
       <div className={`min-h-screen bg-background ${isLoading ? 'opacity-0' : 'opacity-100'} transition-opacity duration-500`}>
         <Navbar />
         <HeroParallax />
-        <HeroSection />
-        <AboutSection />
-        <MarqueeSection />
         <FeaturedProducts />
+        <MarqueeSection />
+        <HeroSection />
         <FeaturesSection />
         <CategoriesSection />
         <TestimonialsSection />

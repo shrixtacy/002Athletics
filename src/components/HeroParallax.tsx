@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
 import Autoplay from 'embla-carousel-autoplay';
 import whiteLogo from '../assets/white-002-logo.png';
+import newPoster from '../assets/002-mid-poster.png';
 import bg1 from '../assets/Gemini_Generated_Image_vnluh9vnluh9vnlu.png';
 import bg2 from '../assets/Gemini_Generated_Image_xzd0dwxzd0dwxzd0.png';
 import bg3 from '../assets/hero-bg-3.jpeg';
@@ -25,6 +26,7 @@ const HeroParallax = () => {
     }, []);
 
     const slides = [
+        { desktop: newPoster, mobile: newPoster },
         { desktop: bg1, mobile: mobileBg1 },
         { desktop: bg2, mobile: mobileBg2 },
         { desktop: bg3, mobile: mobileBg3 },

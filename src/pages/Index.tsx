@@ -10,6 +10,7 @@ import CategoriesSection from '@/components/CategoriesSection';
 import TestimonialsSection from '@/components/TestimonialsSection';
 import NewsletterSection from '@/components/NewsletterSection';
 import Footer from '@/components/Footer';
+import UpcomingProductsSection from '@/components/UpcomingProductsSection';
 
 import SmoothScroll from '@/components/SmoothScroll';
 import CustomCursor from '@/components/CustomCursor';
@@ -27,6 +28,7 @@ const Index = () => {
         <HeroParallax />
         <FeaturedProducts />
         <MarqueeSection />
+        <UpcomingProductsSection />
         <HeroSection />
         <FeaturesSection />
         <CategoriesSection />

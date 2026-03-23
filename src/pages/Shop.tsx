@@ -8,7 +8,34 @@ import ballPreAd from '@/assets/ball-pre-ad.png';
 import ballStrAd from '@/assets/ball-str-ad.png';
 import { useEffect } from 'react';
 
-const products = [
+const upcomingProducts = [
+  {
+    id: 3,
+    name: 'Genesis Series Edition',
+    category: 'Exclusive Collection',
+    image: '/upcoming-1.png',
+    badge: 'Coming Soon',
+    upcoming: true
+  },
+  {
+    id: 4,
+    name: 'Court Signature Gear',
+    category: 'Apparel',
+    image: '/upcoming-2.png',
+    badge: 'Coming Soon',
+    upcoming: true
+  },
+  {
+    id: 5,
+    name: 'Pro Tour Prototype',
+    category: 'Equipment',
+    image: '/upcoming-3.png',
+    badge: 'Coming Soon',
+    upcoming: true
+  }
+];
+
+const availableProducts = [
   {
     id: 1,
     name: 'Pro Tournament Pickleball',
@@ -60,62 +87,110 @@ const Shop = () => {
               </p>
             </div>
 
-            {/* Products Grid */}
-            <div className="grid md:grid-cols-2 max-w-4xl mx-auto gap-8">
-              {products.map((product, index) => (
-                <Link
-                  to={`/product/${product.id}`}
-                  key={product.id}
-                  className="block group relative bg-card hover-lift animate-slide-up"
-                  style={{ animationDelay: `${index * 150}ms`, opacity: 0, animationFillMode: 'forwards' }}
-                >
-                  {/* Badge */}
-                  {product.badge && (
-                    <div className="absolute top-4 left-4 z-10 bg-primary text-primary-foreground px-3 py-1 font-body text-xs uppercase tracking-wider">
-                      {product.badge}
+            {/* Available Products Grid */}
+            <div className="mb-24">
+              <div className="text-center mb-12 animate-fade-in">
+                <h2 className="font-display text-4xl text-foreground">
+                  CURRENTLY AVAILABLE
+                </h2>
+              </div>
+              <div className="grid grid-cols-2 md:grid-cols-2 max-w-4xl mx-auto gap-4 md:gap-8">
+                {availableProducts.map((product, index) => (
+                  <Link
+                    to={`/product/${product.id}`}
+                    key={product.id}
+                    className="block group relative bg-card hover-lift animate-slide-up"
+                    style={{ animationDelay: `${index * 150}ms`, opacity: 0, animationFillMode: 'forwards' }}
+                  >
+                    {/* Badge */}
+                    {product.badge && (
+                      <div className="absolute top-4 left-4 z-10 bg-primary text-primary-foreground px-3 py-1 font-body text-xs uppercase tracking-wider">
+                        {product.badge}
+                      </div>
+                    )}
+
+                    {/* Image Container */}
+                    <div className="relative overflow-hidden bg-secondary aspect-square flex justify-center items-center px-4 md:px-8">
+                      <img
+                        src={product.image}
+                        alt={product.name}
+                        className="w-full h-full object-cover transition-all duration-700 group-hover:scale-105"
+                      />
                     </div>
-                  )}
 
-                  {/* Image Container */}
-                  <div className="relative overflow-hidden bg-secondary aspect-square flex justify-center items-center px-4 md:px-8">
-                    <img
-                      src={product.image}
-                      alt={product.name}
-                      className="w-full h-full object-cover transition-all duration-700 group-hover:scale-105"
-                    />
-                    
-                    {/* Removed Quick Actions */}
-                  </div>
+                    {/* Product Info */}
+                    <div className="p-6 border-t border-border">
+                      <div className="flex items-center gap-2 mb-2">
+                        <span className="font-body text-xs uppercase tracking-wider text-muted-foreground">
+                          {product.category}
+                        </span>
+                        <span className="text-muted-foreground">•</span>
+                        <span className="font-body text-xs text-muted-foreground">
+                          ★ {product.rating} ({product.reviews})
+                        </span>
+                      </div>
+                      
+                      <h3 className="font-display text-2xl text-foreground mb-3 group-hover:text-primary transition-colors">
+                        {product.name}
+                      </h3>
+                      
+                      <div className="flex items-center gap-3">
+                        <span className="font-display text-2xl text-foreground">
+                          ${product.price}
+                        </span>
+                        {product.originalPrice && (
+                          <span className="font-body text-sm text-muted-foreground line-through">
+                            ${product.originalPrice}
+                          </span>
+                        )}
+                      </div>
+                    </div>
+                  </Link>
+                ))}
+              </div>
+            </div>
 
-                  {/* Product Info */}
-                  <div className="p-6 border-t border-border">
-                    <div className="flex items-center gap-2 mb-2">
-                      <span className="font-body text-xs uppercase tracking-wider text-muted-foreground">
+            {/* Upcoming Products Grid */}
+            <div>
+              <div className="text-center mb-12 animate-fade-in">
+                <h2 className="font-display text-4xl text-foreground">
+                  UPCOMING DROPS
+                </h2>
+              </div>
+              <div className="grid grid-cols-2 md:grid-cols-3 max-w-6xl mx-auto gap-4 md:gap-8">
+                {upcomingProducts.map((product, index) => (
+                  <Link
+                    to={`/product/${product.id}`}
+                    key={product.id}
+                    className="block group relative bg-card hover-lift animate-slide-up"
+                    style={{ animationDelay: `${index * 150}ms`, opacity: 0, animationFillMode: 'forwards' }}
+                  >
+                    {product.badge && (
+                      <div className="absolute top-4 left-4 z-10 bg-primary text-primary-foreground px-3 py-1 font-body text-xs uppercase tracking-wider">
+                        {product.badge}
+                      </div>
+                    )}
+                    <div className="relative overflow-hidden bg-secondary aspect-square flex justify-center items-center">
+                      <img
+                        src={product.image}
+                        alt={product.name}
+                        className="w-full h-full object-cover transition-all duration-700 group-hover:scale-105"
+                      />
+                    </div>
+                    <div className="p-6 border-t border-border text-center">
+                      <span className="font-body text-xs uppercase tracking-wider text-muted-foreground block mb-2">
                         {product.category}
                       </span>
-                      <span className="text-muted-foreground">•</span>
-                      <span className="font-body text-xs text-muted-foreground">
-                        ★ {product.rating} ({product.reviews})
-                      </span>
+                      <h3 className="font-display text-2xl text-foreground mb-3 group-hover:text-primary transition-colors">
+                        {product.name}
+                      </h3>
+                      <div className="font-display text-xl text-muted-foreground">
+                        Coming Soon
+                      </div>
                     </div>
-                    
-                    <h3 className="font-display text-2xl text-foreground mb-3 group-hover:text-primary transition-colors">
-                      {product.name}
-                    </h3>
-                    
-                    <div className="flex items-center gap-3">
-                      <span className="font-display text-2xl text-foreground">
-                        ${product.price}
-                      </span>
-                      {product.originalPrice && (
-                        <span className="font-body text-sm text-muted-foreground line-through">
-                          ${product.originalPrice}
-                        </span>
-                      )}
-                    </div>
-                  </div>
-                </Link>
-              ))}
+                  </Link>
+                ))}
+              </div>
             </div>
 
           </div>

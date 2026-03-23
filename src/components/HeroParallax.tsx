@@ -1,20 +1,19 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import useEmblaCarousel from 'embla-carousel-react';
 import Autoplay from 'embla-carousel-autoplay';
-import whiteLogo from '../assets/white-002-logo.png';
-import newPoster from '../assets/002-mid-poster.png';
-import bg1 from '../assets/Gemini_Generated_Image_vnluh9vnluh9vnlu.png';
-import bg2 from '../assets/Gemini_Generated_Image_xzd0dwxzd0dwxzd0.png';
-import bg3 from '../assets/hero-bg-3.jpeg';
-import mobileBg1 from '../assets/Gemini_Generated_Image_diar0mdiar0mdiar.png';
-import mobileBg2 from '../assets/Gemini_Generated_Image_hxz049hxz049hxz0.png';
-import mobileBg3 from '../assets/Gemini_Generated_Image_qdl2v0qdl2v0qdl2.png';
 
 const HeroParallax = () => {
-    const [emblaRef] = useEmblaCarousel({ loop: true, duration: 60 }, [
-        Autoplay({ delay: 4000, stopOnInteraction: false }),
-    ]);
     const [scrollY, setScrollY] = useState(0);
+    const [emblaRef] = useEmblaCarousel({ loop: true, duration: 60 }, [
+        Autoplay({ delay: 3000, stopOnInteraction: false }),
+    ]);
+
+    const mobileSlides = [
+        { image: '/mobile-hero-1.png', link: '/product/1' },
+        { image: '/mobile-hero-2.png', link: '/product/2' },
+        { image: '/mobile-hero-3.png', link: '/product/3' },
+    ];
 
     useEffect(() => {
         const handleScroll = () => {
@@ -25,61 +24,64 @@ const HeroParallax = () => {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
-    const slides = [
-        { desktop: newPoster, mobile: newPoster },
-        { desktop: bg1, mobile: mobileBg1 },
-        { desktop: bg2, mobile: mobileBg2 },
-        { desktop: bg3, mobile: mobileBg3 },
-    ];
-
     return (
-        <div className="relative h-screen w-full overflow-hidden">
-            {/* Background Carousel with Parallax */}
-            <div
-                className="absolute inset-0 w-full h-[120%] -top-[10%]"
-                style={{
-                    transform: `translateY(${scrollY * 0.5}px)`
-                }}
-            >
-                <div className="overflow-hidden h-full" ref={emblaRef}>
-                    <div className="flex h-full">
-                        {slides.map((slide, index) => (
-                            <div className="flex-[0_0_100%] min-w-0 relative h-full" key={index}>
-                                <picture className="w-full h-full block">
-                                    <source media="(max-width: 768px)" srcSet={slide.mobile} />
-                                    <img
-                                        src={slide.desktop}
-                                        alt={`Hero Background ${index + 1}`}
-                                        className="w-full h-full object-cover"
-                                    />
-                                </picture>
-                                {/* Overlay for better text/logo visibility */}
-                                <div className="absolute inset-0 bg-black/30" />
-                            </div>
+        <div className="relative h-[100dvh] w-full">
+            {/* Mobile Slideshow */}
+            <div className="md:hidden absolute inset-0 w-full h-full">
+                <div className="overflow-hidden h-full w-full" ref={emblaRef}>
+                    <div className="flex h-full w-full">
+                        {mobileSlides.map((slide, index) => (
+                            <Link to={slide.link} className="flex-[0_0_100%] min-w-0 relative h-full block group" key={index}>
+                                <img
+                                    src={slide.image}
+                                    alt={`Mobile Hero ${index + 1}`}
+                                    className="w-full h-full object-cover"
+                                />
+                                <div className="absolute inset-0 bg-black/10 transition-colors duration-700" />
+                            </Link>
                         ))}
                     </div>
                 </div>
             </div>
 
-            {/* Centered Logo */}
-            <div className="absolute inset-0 flex items-center justify-center z-10 pointer-events-none">
-                <div
-                    className="relative w-[300px] md:w-[500px] lg:w-[600px] opacity-90 hover:opacity-100 transition-opacity duration-700"
-                    style={{
-                        transform: `translateY(${scrollY * 0.2}px)`
-                    }}
+            {/* Desktop Setup */}
+            <div className="hidden md:flex flex-col h-full w-full">
+                {/* Top Section */}
+                <Link 
+                    to="/product/1" 
+                    className="flex-1 relative overflow-hidden group border-b border-border/20"
                 >
-                    <img
-                        src={whiteLogo}
-                        alt="002 Athletics"
-                        className="w-full h-auto drop-shadow-2xl animate-fade-in"
+                    <img 
+                        src="/front-cover-1.png" 
+                        alt="Pro Tournament Pickleball" 
+                        className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700" 
+                        style={{
+                            transform: `translateY(${scrollY * 0.15}px) scale(1.05)`
+                        }}
                     />
-                </div>
+                    <div className="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition-colors duration-700" />
+                </Link>
+
+                {/* Bottom Section */}
+                <Link 
+                    to="/product/2" 
+                    className="flex-1 relative overflow-hidden group"
+                >
+                    <img 
+                        src="/front-cover-2.png" 
+                        alt="Classic Training Ball" 
+                        className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700" 
+                        style={{
+                            transform: `translateY(${scrollY * 0.1}px) scale(1.05)`
+                        }}
+                    />
+                    <div className="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition-colors duration-700" />
+                </Link>
             </div>
 
             {/* Scroll Indicator */}
-            <div className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce z-20">
-                <div className="w-6 h-10 border-2 border-white/50 rounded-full flex justify-center">
+            <div className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce z-20 pointer-events-none">
+                <div className="w-6 h-10 border-2 border-white/50 rounded-full flex justify-center backdrop-blur-sm">
                     <div className="w-1 h-2 bg-white rounded-full mt-2" />
                 </div>
             </div>

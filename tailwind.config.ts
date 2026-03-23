@@ -55,7 +55,7 @@ export default {
         },
       },
       fontFamily: {
-        display: ['Bebas Neue', 'sans-serif'],
+        display: ['"TECHNO CAPTURE"', 'sans-serif'],
         body: ['Inter', 'sans-serif'],
       },
       borderRadius: {

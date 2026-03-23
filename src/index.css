@@ -1,4 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.cdnfonts.com/css/techno-capture');
 
 @tailwind base;
 @tailwind components;
@@ -42,7 +43,7 @@
     --purple-light: 262 83% 68%;
     --purple-dark: 262 83% 48%;
 
-    --font-display: 'Bebas Neue', sans-serif;
+    --font-display: 'TECHNO CAPTURE', sans-serif;
     --font-body: 'Inter', sans-serif;
 
     /* Animation tokens */

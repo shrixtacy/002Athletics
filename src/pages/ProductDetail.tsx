@@ -18,7 +18,7 @@ const allProducts = [
     category: 'Professional',
     price: 15,
     originalPrice: 20,
-    images: [ballPreAd, ballStrAd, ballPreAd],
+    images: [ballPreAd, '/pre-sports-ad-poster.png', ballStrAd, ballPreAd],
     description: 'Designed for professional tournament play, these pickleballs engineered for maximum durability and a consistent bounce. Tested rigorously on outdoor courts to withstand aggressive play while maintaining their true flight path.',
     features: [
       'Approved for official tournament play',
@@ -34,7 +34,7 @@ const allProducts = [
     name: 'Classic Training Ball',
     category: 'Training',
     price: 12,
-    images: [ballStrAd, ballPreAd, ballStrAd],
+    images: [ballStrAd, '/str-sports-ad-poster.png', ballPreAd, ballStrAd],
     description: 'The perfect ball for drills, practice sessions, and recreational games. Built specifically to offer slightly more bounce forgiveness while retaining the authentic feel of a match ball. Great for extended practice sessions.',
     features: [
       'Extended durability for repeated drills',
@@ -45,6 +45,48 @@ const allProducts = [
     rating: 4.8,
     reviews: 64,
   },
+  {
+    id: 3,
+    name: 'Genesis Series Edition',
+    category: 'Exclusive Collection',
+    images: ['/upcoming-1.png'],
+    description: 'This exclusive limited edition drop is built to elevate your performance. Crafted with the finest materials and cutting-edge engineering, you can experience unparalleled control and power. Stay tuned for the official launch date.',
+    features: [
+      'Limited production run',
+      'Advanced carbon technology',
+      'Ergonomic grip design',
+      'Unmatched power and control'
+    ],
+    upcoming: true
+  },
+  {
+    id: 4,
+    name: 'Court Signature Gear',
+    category: 'Apparel',
+    images: ['/upcoming-2.png'],
+    description: 'Designed for optimal movement and breathability on the court. Our signature gear represents the pinnacle of athletic wear, combining sleek aesthetics with unparalleled comfort for serious competitors.',
+    features: [
+      'Moisture-wicking fabric',
+      'Four-way stretch for maximum mobility',
+      'Premium stitching and durability',
+      'Signature court design'
+    ],
+    upcoming: true
+  },
+  {
+    id: 5,
+    name: 'Pro Tour Prototype',
+    category: 'Equipment',
+    images: ['/upcoming-3.png'],
+    description: 'A sneak peek into the future of pro tours. This prototype equipment features the latest innovations in court technology, providing a professional-grade experience that dominates the game.',
+    features: [
+      'Pro-tour tested prototype design',
+      'Engineered for competitive advantage',
+      'Exclusive premium finish',
+      'Next-generation balance and precision'
+    ],
+    upcoming: true
+  }
 ];
 
 const ProductDetail = () => {
@@ -118,26 +160,36 @@ const ProductDetail = () => {
                 </h1>
                 
                 <div className="flex items-center gap-4 mb-6">
-                  <div className="flex text-primary">
-                    {[1, 2, 3, 4, 5].map((star) => (
-                      <Star key={star} size={20} fill={star <= Math.floor(product.rating) ? 'currentColor' : 'none'} />
-                    ))}
-                  </div>
-                  <span className="font-body text-muted-foreground">
-                    {product.rating} ({product.reviews} reviews)
-                  </span>
-                </div>
-
-                <div className="flex items-center gap-4 mb-8">
-                  <span className="font-display text-3xl md:text-4xl text-foreground">
-                    ${product.price}
-                  </span>
-                  {product.originalPrice && (
-                    <span className="font-body text-xl text-muted-foreground line-through">
-                      ${product.originalPrice}
-                    </span>
+                  {product.upcoming ? (
+                    <div className="inline-block bg-primary text-primary-foreground px-4 py-2 font-body text-sm uppercase tracking-wider rounded">
+                      Coming Soon
+                    </div>
+                  ) : (
+                    <>
+                      <div className="flex text-primary">
+                        {[1, 2, 3, 4, 5].map((star) => (
+                          <Star key={star} size={20} fill={star <= Math.floor(product.rating) ? 'currentColor' : 'none'} />
+                        ))}
+                      </div>
+                      <span className="font-body text-muted-foreground">
+                        {product.rating} ({product.reviews} reviews)
+                      </span>
+                    </>
                   )}
                 </div>
+
+                {!product.upcoming && (
+                  <div className="flex items-center gap-4 mb-8">
+                    <span className="font-display text-3xl md:text-4xl text-foreground">
+                      ${product.price}
+                    </span>
+                    {product.originalPrice && (
+                      <span className="font-body text-xl text-muted-foreground line-through">
+                        ${product.originalPrice}
+                      </span>
+                    )}
+                  </div>
+                )}
 
                 <p className="font-body text-lg text-muted-foreground mb-8 leading-relaxed">
                   {product.description}
@@ -155,58 +207,70 @@ const ProductDetail = () => {
                   </ul>
                 </div>
 
-                {/* Add to Cart Actions */}
+                {/* Add to Cart Actions or Coming Soon message */}
                 <div className="mt-auto pt-8 border-t border-border">
-                  {!isInCart ? (
-                    <Button 
-                      className="w-full h-14 text-lg gap-3 transition-all hover:scale-[1.02]"
-                      onClick={() => addItem({
-                        id: product.id,
-                        name: product.name,
-                        price: product.price,
-                        image: product.images[0],
-                        quantity: 1
-                      })}
-                    >
-                      <ShoppingCart size={20} />
-                      Add to Cart
-                    </Button>
-                  ) : (
-                    <div className="flex items-center justify-between border border-border rounded h-14 bg-secondary/30 animate-fade-in shadow-inner">
-                      <button 
-                        className="px-6 font-display text-2xl hover:bg-secondary transition-colors h-full rounded-l"
-                        onClick={() => {
-                          if (cartItem.quantity <= 1) {
-                            removeItem(product.id);
-                          } else {
-                            updateQuantity(product.id, cartItem.quantity - 1);
-                          }
-                        }}
-                      >
-                        -
-                      </button>
-                      <div className="flex flex-col items-center justify-center pointer-events-none">
-                        <span className="font-display text-xl leading-none">{cartItem.quantity}</span>
-                        <span className="font-body text-[10px] uppercase tracking-widest text-primary font-medium mt-1">In Cart</span>
-                      </div>
-                      <button 
-                        className="px-6 font-display text-xl hover:bg-secondary transition-colors h-full rounded-r"
-                        onClick={() => updateQuantity(product.id, cartItem.quantity + 1)}
-                      >
-                        +
-                      </button>
+                  {product.upcoming ? (
+                    <div className="w-full py-4 text-center border border-border rounded bg-secondary/30">
+                      <span className="font-display text-2xl tracking-widest text-muted-foreground">
+                        LAUNCHING SOON
+                      </span>
                     </div>
+                  ) : (
+                    <>
+                      {!isInCart ? (
+                        <Button 
+                          className="w-full h-14 text-lg gap-3 transition-all hover:scale-[1.02]"
+                          onClick={() => addItem({
+                            id: product.id,
+                            name: product.name,
+                            price: product.price,
+                            image: product.images[0],
+                            quantity: 1
+                          })}
+                        >
+                          <ShoppingCart size={20} />
+                          Add to Cart
+                        </Button>
+                      ) : (
+                        <div className="flex items-center justify-between border border-border rounded h-14 bg-secondary/30 animate-fade-in shadow-inner">
+                          <button 
+                            className="px-6 font-display text-2xl hover:bg-secondary transition-colors h-full rounded-l"
+                            onClick={() => {
+                              if (cartItem.quantity <= 1) {
+                                removeItem(product.id);
+                              } else {
+                                updateQuantity(product.id, cartItem.quantity - 1);
+                              }
+                            }}
+                          >
+                            -
+                          </button>
+                          <div className="flex flex-col items-center justify-center pointer-events-none">
+                            <span className="font-display text-xl leading-none">{cartItem.quantity}</span>
+                            <span className="font-body text-[10px] uppercase tracking-widest text-primary font-medium mt-1">In Cart</span>
+                          </div>
+                          <button 
+                            className="px-6 font-display text-xl hover:bg-secondary transition-colors h-full rounded-r"
+                            onClick={() => updateQuantity(product.id, cartItem.quantity + 1)}
+                          >
+                            +
+                          </button>
+                        </div>
+                      )}
+                    </>
                   )}
                 </div>
                 
-                <div className="mt-8 flex gap-6 font-body text-sm text-muted-foreground border-t border-border pt-6">
-                  <div className="flex items-center gap-2">
-                    <span className="w-2 h-2 rounded-full bg-green-500"></span> In Stock
+                {!product.upcoming && (
+                  <div className="mt-8 flex gap-6 font-body text-sm text-muted-foreground border-t border-border pt-6">
+                    <div className="flex items-center gap-2">
+                      <span className="w-2 h-2 rounded-full bg-green-500"></span> In Stock
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <span className="w-2 h-2 rounded-full bg-primary"></span> Free Shipping
+                    </div>
                   </div>
-                  <div className="flex items-center gap-2">
-                    <span className="w-2 h-2 rounded-full bg-primary"></span> Free Shipping
-                  </div>
-                </div>
+                )}
 
               </div>
             </div>
@@ -241,7 +305,7 @@ const ProductDetail = () => {
                           {p.name}
                         </h3>
                         <span className="font-display text-xl text-foreground">
-                          ${p.price}
+                          {p.upcoming ? 'COMING SOON' : `$${p.price}`}
                         </span>
                       </div>
                     </Link>

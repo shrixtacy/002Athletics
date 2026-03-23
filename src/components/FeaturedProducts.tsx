@@ -12,7 +12,7 @@ const products = [
     category: 'Professional',
     price: 15,
     originalPrice: 20,
-    image: ballPreAd,
+    image: '/pre-sports-ad-poster.png',
     badge: 'Best Seller',
     rating: 4.9,
     reviews: 128,
@@ -22,7 +22,7 @@ const products = [
     name: 'Classic Training Ball',
     category: 'Training',
     price: 12,
-    image: ballStrAd,
+    image: '/str-sports-ad-poster.png',
     badge: 'New',
     rating: 4.8,
     reviews: 64,
@@ -63,13 +63,13 @@ const FeaturedProducts = () => {
             <Link
               to={`/product/${product.id}`}
               key={product.id}
-              className={`block group relative bg-card hover-lift scroll-pop-up ${gridVisible ? 'visible' : ''}`}
+              className={`flex flex-col group relative bg-card hover-lift scroll-pop-up ${gridVisible ? 'visible' : ''}`}
               style={{ transitionDelay: `${index * 150}ms` }}
             >
               {/* Badge */}
               {product.badge && (
                 <div 
-                  className={`absolute top-4 left-4 z-10 bg-primary text-primary-foreground px-3 py-1 font-body text-xs uppercase tracking-wider transition-all duration-500 ${gridVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-4'}`}
+                  className={`absolute top-2 left-2 md:top-4 md:left-4 z-10 bg-primary text-primary-foreground px-2 py-0.5 md:px-3 md:py-1 font-body text-[10px] md:text-xs uppercase tracking-wider transition-all duration-500 ${gridVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-4'}`}
                   style={{ transitionDelay: `${index * 150 + 300}ms` }}
                 >
                   {product.badge}
@@ -77,11 +77,11 @@ const FeaturedProducts = () => {
               )}
 
               {/* Image Container */}
-              <div className="relative overflow-hidden bg-secondary aspect-square flex justify-center items-center px-4 md:px-8">
+              <div className="relative overflow-hidden bg-secondary flex justify-center items-center">
                 <img
                   src={product.image}
                   alt={product.name}
-                  className={`w-full h-full object-cover transition-all duration-700 group-hover:scale-105 ${gridVisible ? 'scale-100 blur-0' : 'scale-110 blur-sm'}`}
+                  className={`w-full h-auto block transition-all duration-700 group-hover:scale-105 ${gridVisible ? 'scale-100 blur-0' : 'scale-110 blur-sm'}`}
                   style={{ transitionDelay: `${index * 150 + 100}ms` }}
                 />
                 
@@ -89,27 +89,27 @@ const FeaturedProducts = () => {
               </div>
 
               {/* Product Info */}
-              <div className="p-6 border-t border-border">
-                <div className="flex items-center gap-2 mb-2">
-                  <span className="font-body text-xs uppercase tracking-wider text-muted-foreground">
+              <div className="p-3 md:p-6 border-t border-border flex flex-col flex-1">
+                <div className="flex flex-wrap items-center gap-1 md:gap-2 mb-2">
+                  <span className="font-body text-[10px] md:text-xs uppercase tracking-wider text-muted-foreground whitespace-nowrap">
                     {product.category}
                   </span>
-                  <span className="text-muted-foreground">•</span>
-                  <span className="font-body text-xs text-muted-foreground">
+                  <span className="text-muted-foreground hidden sm:inline">•</span>
+                  <span className="font-body text-[10px] md:text-xs text-muted-foreground whitespace-nowrap">
                     ★ {product.rating} ({product.reviews})
                   </span>
                 </div>
                 
-                <h3 className="font-display text-2xl text-foreground mb-3 group-hover:text-primary transition-colors">
+                <h3 className="font-display text-base md:text-2xl text-foreground mb-2 md:mb-3 group-hover:text-primary transition-colors line-clamp-2 leading-tight">
                   {product.name}
                 </h3>
                 
-                <div className="flex items-center gap-3">
-                  <span className="font-display text-2xl text-foreground">
+                <div className="flex items-center gap-2 md:gap-3 mt-auto">
+                  <span className="font-display text-lg md:text-2xl text-foreground">
                     ${product.price}
                   </span>
                   {product.originalPrice && (
-                    <span className="font-body text-sm text-muted-foreground line-through">
+                    <span className="font-body text-xs md:text-sm text-muted-foreground line-through">
                       ${product.originalPrice}
                     </span>
                   )}

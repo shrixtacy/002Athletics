@@ -38,8 +38,8 @@ const upcomingProducts = [
 const availableProducts = [
   {
     id: 1,
-    name: 'Pro Tournament Pickleball',
-    category: 'Professional',
+    name: '002 PRE',
+    category: 'Training',
     price: 15,
     originalPrice: 20,
     image: '/pre-sports-ad-poster.png',
@@ -49,8 +49,8 @@ const availableProducts = [
   },
   {
     id: 2,
-    name: 'Classic Training Ball',
-    category: 'Training',
+    name: '002 STR',
+    category: 'Professional',
     price: 12,
     image: '/str-sports-ad-poster.png',
     badge: 'New',
@@ -152,7 +152,7 @@ const Shop = () => {
 
             {/* Upcoming Products Grid */}
             <div>
-              <div className="text-center mb-12 animate-fade-in">
+              <div className="text-center mb-12 mt-6 animate-fade-in">
                 <h2 className="font-display text-4xl text-foreground">
                   UPCOMING DROPS
                 </h2>
@@ -165,22 +165,14 @@ const Shop = () => {
                     className="flex flex-col group relative bg-card hover-lift animate-slide-up"
                     style={{ animationDelay: `${index * 150}ms`, opacity: 0, animationFillMode: 'forwards' }}
                   >
-                    {product.badge && (
-                      <div className="absolute top-2 left-2 md:top-4 md:left-4 z-10 bg-primary text-primary-foreground px-2 py-0.5 md:px-3 md:py-1 font-body text-[10px] md:text-xs uppercase tracking-wider">
-                        {product.badge}
-                      </div>
-                    )}
-                    <div className="relative overflow-hidden bg-secondary aspect-square flex justify-center items-center">
+                    <div className="relative overflow-hidden bg-secondary aspect-[3/4] flex justify-center items-start">
                       <img
                         src={product.image}
                         alt={product.name}
-                        className="w-full h-full object-cover transition-all duration-700 group-hover:scale-105"
+                        className="w-full h-full object-contain object-top transition-all duration-700 group-hover:scale-105"
                       />
                     </div>
                     <div className="p-3 md:p-6 border-t border-border text-center flex flex-col flex-1">
-                      <span className="font-body text-[10px] md:text-xs uppercase tracking-wider text-muted-foreground block mb-1 md:mb-2">
-                        {product.category}
-                      </span>
                       <h3 className="font-display text-base md:text-2xl text-foreground mb-2 md:mb-3 group-hover:text-primary transition-colors line-clamp-2 leading-tight">
                         {product.name}
                       </h3>

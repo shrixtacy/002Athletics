@@ -11,8 +11,8 @@ import ballStrAd from '@/assets/ball-str-ad.png';
 const navLinks = ['Contact', 'About'];
 
 const pickleballProducts = [
-  { id: 1, name: 'Pro Tournament Pickleball', image: ballPreAd },
-  { id: 2, name: 'Classic Training Ball', image: ballStrAd }
+  { id: 1, name: '002 PRE', image: ballPreAd },
+  { id: 2, name: '002 STR', image: ballStrAd }
 ];
 
 const Navbar = () => {
@@ -59,7 +59,7 @@ const Navbar = () => {
                 ${isScrolled ? 'w-0 opacity-0 overflow-hidden' : 'w-auto opacity-100'}
                 ${isDarkText ? 'text-foreground' : 'text-white'}`}
             >
-              002
+              zero zero two
             </span>
           </Link>
 

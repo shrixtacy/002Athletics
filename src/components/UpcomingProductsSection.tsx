@@ -37,7 +37,7 @@ const UpcomingProductsSection = () => {
       <div className="container mx-auto px-6">
         <div 
           ref={headerRef as React.RefObject<HTMLDivElement>}
-          className={`text-center mb-16 scroll-fade-rotate ${headerVisible ? 'visible' : ''}`}
+          className={`text-center mb-16 mt-6 scroll-fade-rotate ${headerVisible ? 'visible' : ''}`}
         >
           <span className="font-body text-sm uppercase tracking-widest text-primary mb-4 block">
             Sneak Peek
@@ -56,22 +56,14 @@ const UpcomingProductsSection = () => {
               key={product.id}
               className="flex-shrink-0 w-[85vw] sm:w-[60vw] md:w-auto snap-center block group relative bg-card hover-lift"
             >
-              {product.badge && (
-                <div className="absolute top-4 left-4 z-10 bg-primary text-primary-foreground px-3 py-1 font-body text-xs uppercase tracking-wider">
-                  {product.badge}
-                </div>
-              )}
-              <div className="relative overflow-hidden bg-secondary aspect-square flex justify-center items-center">
+              <div className="relative overflow-hidden bg-secondary aspect-[3/4] flex justify-center items-start">
                 <img
                   src={product.image}
                   alt={product.name}
-                  className="w-full h-full object-cover transition-all duration-700 group-hover:scale-105"
+                  className="w-full h-full object-contain object-top transition-all duration-700 group-hover:scale-105"
                 />
               </div>
               <div className="p-6 border-t border-border text-center">
-                <span className="font-body text-xs uppercase tracking-wider text-muted-foreground block mb-2">
-                  {product.category}
-                </span>
                 <h3 className="font-display text-2xl text-foreground mb-3 group-hover:text-primary transition-colors">
                   {product.name}
                 </h3>

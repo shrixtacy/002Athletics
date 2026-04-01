@@ -8,8 +8,8 @@ import ballStrAd from '@/assets/ball-str-ad.png';
 const products = [
   {
     id: 1,
-    name: 'Pro Tournament Pickleball',
-    category: 'Professional',
+    name: '002 PRE',
+    category: 'Training',
     price: 15,
     originalPrice: 20,
     image: '/pre-sports-ad-poster.png',
@@ -19,8 +19,8 @@ const products = [
   },
   {
     id: 2,
-    name: 'Classic Training Ball',
-    category: 'Training',
+    name: '002 STR',
+    category: 'Professional',
     price: 12,
     image: '/str-sports-ad-poster.png',
     badge: 'New',

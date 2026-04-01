@@ -53,7 +53,7 @@ const HeroParallax = () => {
                 >
                     <img 
                         src="/front-cover-1.png" 
-                        alt="Pro Tournament Pickleball" 
+                        alt="002 PRE" 
                         className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700" 
                         style={{
                             transform: `translateY(${scrollY * 0.15}px) scale(1.05)`
@@ -69,7 +69,7 @@ const HeroParallax = () => {
                 >
                     <img 
                         src="/front-cover-2.png" 
-                        alt="Classic Training Ball" 
+                        alt="002 STR" 
                         className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700" 
                         style={{
                             transform: `translateY(${scrollY * 0.1}px) scale(1.05)`

@@ -14,8 +14,8 @@ import ballStrAd from '@/assets/ball-str-ad.png';
 const allProducts = [
   {
     id: 1,
-    name: 'Pro Tournament Pickleball',
-    category: 'Professional',
+    name: '002 PRE',
+    category: 'Training',
     price: 15,
     originalPrice: 20,
     images: [ballPreAd, '/pre-sports-ad-poster.png', ballStrAd, ballPreAd],
@@ -31,8 +31,8 @@ const allProducts = [
   },
   {
     id: 2,
-    name: 'Classic Training Ball',
-    category: 'Training',
+    name: '002 STR',
+    category: 'Professional',
     price: 12,
     images: [ballStrAd, '/str-sports-ad-poster.png', ballPreAd, ballStrAd],
     description: 'The perfect ball for drills, practice sessions, and recreational games. Built specifically to offer slightly more bounce forgiveness while retaining the authentic feel of a match ball. Great for extended practice sessions.',

@@ -9,7 +9,7 @@ const HeroSection = () => {
     setIsVisible(true);
   }, []);
 
-  const headingText = "DOMINATE THE COURT";
+  const headingLines = [["DOMINATE"], ["THE", "COURT"]];
   
   return (
     <section className="relative min-h-screen flex items-center bg-background overflow-x-hidden">
@@ -31,17 +31,32 @@ const HeroSection = () => {
 
             {/* Main Heading */}
             <h1 className="font-display text-4xl sm:text-6xl md:text-8xl lg:text-9xl leading-none mb-4 sm:mb-6 overflow-hidden">
-              {headingText.split('').map((char, index) => (
-                <span
-                  key={index}
-                  className={`inline-block transition-all duration-500 ${
-                    isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-full'
-                  }`}
-                  style={{ transitionDelay: `${index * 30}ms` }}
-                >
-                  {char === ' ' ? '\u00A0' : char}
-                </span>
-              ))}
+              {headingLines.map((line, lineIndex) => {
+                const prevChars = headingLines.slice(0, lineIndex).reduce((sum, l) => sum + l.join(' ').length, 0) + lineIndex;
+                return (
+                  <span key={lineIndex} className="block">
+                    {line.map((word, wordIndex) => (
+                      <span key={wordIndex} className="inline-block whitespace-nowrap">
+                        {wordIndex > 0 && <span className="inline-block">&nbsp;</span>}
+                        {word.split('').map((char, charIndex) => {
+                          const globalIndex = prevChars + line.slice(0, wordIndex).join(' ').length + (wordIndex > 0 ? 1 : 0) + charIndex;
+                          return (
+                            <span
+                              key={charIndex}
+                              className={`inline-block transition-all duration-500 ${
+                                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-full'
+                              }`}
+                              style={{ transitionDelay: `${globalIndex * 30}ms` }}
+                            >
+                              {char}
+                            </span>
+                          );
+                        })}
+                      </span>
+                    ))}
+                  </span>
+                );
+              })}
             </h1>
 
             {/* Subtitle */}

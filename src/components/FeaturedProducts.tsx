@@ -10,10 +10,9 @@ const products = [
     id: 1,
     name: '002 PRE',
     category: 'Training',
-    price: 15,
-    originalPrice: 20,
+    price: 150,
     image: '/pre-sports-ad-poster.png',
-    badge: 'Best Seller',
+    badge: null,
     rating: 4.9,
     reviews: 128,
   },
@@ -21,9 +20,9 @@ const products = [
     id: 2,
     name: '002 STR',
     category: 'Professional',
-    price: 12,
+    price: 130,
     image: '/str-sports-ad-poster.png',
-    badge: 'New',
+    badge: 'Best Seller',
     rating: 4.8,
     reviews: 64,
   },
@@ -106,7 +105,7 @@ const FeaturedProducts = () => {
                 
                 <div className="flex items-center gap-2 md:gap-3 mt-auto">
                   <span className="font-display text-lg md:text-2xl text-foreground">
-                    ${product.price}
+                    ₹{product.price}
                   </span>
                   {product.originalPrice && (
                     <span className="font-body text-xs md:text-sm text-muted-foreground line-through">

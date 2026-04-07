@@ -43,10 +43,10 @@ const Navbar = () => {
       <div
         className={`transition-all duration-700 ease-custom ${isScrolled
           ? `mx-auto max-w-4xl backdrop-blur-md border border-border shadow-lg px-4 md:px-6 py-3 ${isMobileMenuOpen ? 'w-full rounded-none bg-background border-t-0 border-x-0' : 'w-full rounded-[2rem] bg-background/95'}`
-          : `container mx-auto px-6 py-4 ${isMobileMenuOpen || !isHomePage ? 'bg-background' : 'bg-transparent'}`
+          : `w-full px-6 py-4 ${isMobileMenuOpen || !isHomePage ? 'bg-background' : 'bg-transparent'}`
           }`}
       >
-        <div className="relative flex items-center justify-center md:justify-between">
+        <div className="relative flex items-center justify-between">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-3 md:gap-4 transition-opacity hover:opacity-80">
             <img
@@ -55,7 +55,7 @@ const Navbar = () => {
               className="h-12 md:h-16 w-auto transition-all duration-300"
             />
             <span
-              className={`font-display text-3xl md:text-4xl tracking-wider whitespace-nowrap transition-all duration-700 ease-custom 
+              className={`font-display text-lg sm:text-2xl md:text-4xl tracking-wider whitespace-nowrap transition-all duration-700 ease-custom 
                 ${isScrolled ? 'w-0 opacity-0 overflow-hidden' : 'w-auto opacity-100'}
                 ${isDarkText ? 'text-foreground' : 'text-white'}`}
             >
@@ -156,8 +156,12 @@ const Navbar = () => {
         </div>
 
         {/* Mobile Menu */}
-        {isMobileMenuOpen && (
-          <div className="md:hidden mt-4 pb-4 border-t border-border pt-4 animate-slide-in-left">
+        <div
+          className={`md:hidden overflow-hidden transition-all duration-500 ease-in-out ${
+            isMobileMenuOpen ? 'max-h-[500px] opacity-100 mt-4' : 'max-h-0 opacity-0 mt-0'
+          }`}
+        >
+          <div className="pb-4 border-t border-border pt-4">
             <div className="flex flex-col gap-4">
               
               <div className="flex flex-col gap-2">
@@ -192,7 +196,7 @@ const Navbar = () => {
               </Link>
             </div>
           </div>
-        )}
+        </div>
       </div>
     </nav>
   );

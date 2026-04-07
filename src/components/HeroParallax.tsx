@@ -10,9 +10,9 @@ const HeroParallax = () => {
     ]);
 
     const mobileSlides = [
-        { image: '/mobile-hero-1.png', link: '/product/1' },
-        { image: '/mobile-hero-2.png', link: '/product/2' },
-        { image: '/mobile-hero-3.png', link: '/product/3' },
+        { image: '/mobile-hero-1.png', link: '/pre' },
+        { image: '/mobile-hero-2.png', link: '/str' },
+        { image: '/mobile-hero-3.png', link: '/pre' },
     ];
 
     useEffect(() => {
@@ -48,7 +48,7 @@ const HeroParallax = () => {
             <div className="hidden md:flex flex-col h-full w-full">
                 {/* Top Section */}
                 <Link 
-                    to="/product/1" 
+                    to="/pre" 
                     className="flex-1 relative overflow-hidden group border-b border-border/20"
                 >
                     <img 
@@ -64,7 +64,7 @@ const HeroParallax = () => {
 
                 {/* Bottom Section */}
                 <Link 
-                    to="/product/2" 
+                    to="/str" 
                     className="flex-1 relative overflow-hidden group"
                 >
                     <img 

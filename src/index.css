@@ -16,7 +16,7 @@
     --popover: 0 0% 100%;
     --popover-foreground: 0 0% 6%;
 
-    --primary: 262 83% 58%;
+    --primary: 262 83% 38%;
     --primary-foreground: 0 0% 100%;
 
     --secondary: 40 30% 94%;
@@ -25,7 +25,7 @@
     --muted: 40 20% 94%;
     --muted-foreground: 0 0% 40%;
 
-    --accent: 262 83% 58%;
+    --accent: 262 83% 38%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84% 60%;
@@ -33,15 +33,15 @@
 
     --border: 40 20% 88%;
     --input: 40 20% 88%;
-    --ring: 262 83% 58%;
+    --ring: 262 83% 38%;
 
     --radius: 0.5rem;
 
     /* Custom design tokens */
     --beige: 40 30% 94%;
     --beige-dark: 40 25% 88%;
-    --purple-light: 262 83% 68%;
-    --purple-dark: 262 83% 48%;
+    --purple-light: 262 83% 48%;
+    --purple-dark: 262 83% 28%;
 
     --font-display: 'TECHNO CAPTURE', sans-serif;
     --font-body: 'Inter', sans-serif;
@@ -60,13 +60,13 @@
     --card-foreground: 0 0% 98%;
     --popover: 0 0% 6%;
     --popover-foreground: 0 0% 98%;
-    --primary: 262 83% 58%;
+    --primary: 262 83% 38%;
     --primary-foreground: 0 0% 100%;
     --secondary: 0 0% 14%;
     --secondary-foreground: 0 0% 98%;
     --muted: 0 0% 14%;
     --muted-foreground: 0 0% 60%;
-    --accent: 262 83% 58%;
+    --accent: 262 83% 38%;
     --accent-foreground: 0 0% 100%;
     --border: 0 0% 20%;
     --input: 0 0% 20%;

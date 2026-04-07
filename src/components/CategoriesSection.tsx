@@ -18,7 +18,7 @@ const categories = [
     count: 8,
   },
   {
-    title: 'Accessories',
+    title: 'Clothing',
     count: 32,
   },
 ];

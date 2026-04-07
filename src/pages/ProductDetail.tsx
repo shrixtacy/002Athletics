@@ -16,8 +16,7 @@ const allProducts = [
     id: 1,
     name: '002 PRE',
     category: 'Training',
-    price: 15,
-    originalPrice: 20,
+    price: 150,
     images: [ballPreAd, '/pre-sports-ad-poster.png', ballStrAd, ballPreAd],
     description: 'Designed for professional tournament play, these pickleballs engineered for maximum durability and a consistent bounce. Tested rigorously on outdoor courts to withstand aggressive play while maintaining their true flight path.',
     features: [
@@ -33,7 +32,7 @@ const allProducts = [
     id: 2,
     name: '002 STR',
     category: 'Professional',
-    price: 12,
+    price: 130,
     images: [ballStrAd, '/str-sports-ad-poster.png', ballPreAd, ballStrAd],
     description: 'The perfect ball for drills, practice sessions, and recreational games. Built specifically to offer slightly more bounce forgiveness while retaining the authentic feel of a match ball. Great for extended practice sessions.',
     features: [
@@ -181,11 +180,11 @@ const ProductDetail = () => {
                 {!product.upcoming && (
                   <div className="flex items-center gap-4 mb-8">
                     <span className="font-display text-3xl md:text-4xl text-foreground">
-                      ${product.price}
+                      ₹{product.price}
                     </span>
                     {product.originalPrice && (
                       <span className="font-body text-xl text-muted-foreground line-through">
-                        ${product.originalPrice}
+                        ₹{product.originalPrice}
                       </span>
                     )}
                   </div>
@@ -305,7 +304,7 @@ const ProductDetail = () => {
                           {p.name}
                         </h3>
                         <span className="font-display text-xl text-foreground">
-                          {p.upcoming ? 'COMING SOON' : `$${p.price}`}
+                          {p.upcoming ? 'COMING SOON' : `₹${p.price}`}
                         </span>
                       </div>
                     </Link>

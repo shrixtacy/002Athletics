@@ -59,7 +59,7 @@ const PreBallPage = () => {
                 <img
                   src={f.image}
                   alt={f.title}
-                  className="w-full aspect-[3/4] object-cover hover:scale-105 transition-transform duration-500"
+                  className="w-full aspect-[3/4] object-cover object-top hover:scale-105 transition-transform duration-500"
                 />
               </div>
               <h3 className="font-display text-xl uppercase tracking-wide">{f.title}</h3>

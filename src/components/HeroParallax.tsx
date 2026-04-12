@@ -1,79 +1,52 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import useEmblaCarousel from 'embla-carousel-react';
-import Autoplay from 'embla-carousel-autoplay';
 
 const HeroParallax = () => {
     const [scrollY, setScrollY] = useState(0);
-    const [emblaRef] = useEmblaCarousel({ loop: true, duration: 60 }, [
-        Autoplay({ delay: 3000, stopOnInteraction: false }),
-    ]);
-
-    const mobileSlides = [
-        { image: '/mobile-hero-1.png', link: '/pre' },
-        { image: '/mobile-hero-2.png', link: '/str' },
-        { image: '/mobile-hero-3.png', link: '/pre' },
-    ];
 
     useEffect(() => {
-        const handleScroll = () => {
-            setScrollY(window.scrollY);
-        };
-
+        const handleScroll = () => setScrollY(window.scrollY);
         window.addEventListener('scroll', handleScroll);
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
     return (
-        <div className="relative h-[100dvh] w-full">
-            {/* Mobile Slideshow */}
-            <div className="md:hidden absolute inset-0 w-full h-full">
-                <div className="overflow-hidden h-full w-full" ref={emblaRef}>
-                    <div className="flex h-full w-full">
-                        {mobileSlides.map((slide, index) => (
-                            <Link to={slide.link} className="flex-[0_0_100%] min-w-0 relative h-full block group" key={index}>
-                                <img
-                                    src={slide.image}
-                                    alt={`Mobile Hero ${index + 1}`}
-                                    className="w-full h-full object-cover"
-                                />
-                                <div className="absolute inset-0 bg-black/10 transition-colors duration-700" />
-                            </Link>
-                        ))}
-                    </div>
-                </div>
+        <div className="relative md:h-[100dvh] w-full flex flex-col">
+
+            {/* Mobile: two stacked posters */}
+            <div className="md:hidden flex flex-col w-full">
+                <Link to="/str">
+                    <img src="/str-sports-ad-poster.png" alt="002 STR" className="w-full h-auto block" />
+                </Link>
+                <Link to="/pre">
+                    <img src="/pre-sports-ad-poster.png" alt="002 PRE" className="w-full h-auto block" />
+                </Link>
             </div>
 
-            {/* Desktop Setup */}
+            {/* Desktop: parallax two halves */}
             <div className="hidden md:flex flex-col h-full w-full">
-                {/* Top Section */}
-                <Link 
-                    to="/pre" 
+                <Link
+                    to="/pre"
                     className="flex-1 relative overflow-hidden group border-b border-border/20"
                 >
-                    <img 
-                        src="/front-cover-1.png" 
-                        alt="002 PRE" 
-                        className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700" 
-                        style={{
-                            transform: `translateY(${scrollY * 0.15}px) scale(1.05)`
-                        }}
+                    <img
+                        src="/front-cover-1.png"
+                        alt="002 PRE"
+                        className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
+                        style={{ transform: `translateY(${scrollY * 0.15}px) scale(1.05)` }}
                     />
                     <div className="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition-colors duration-700" />
                 </Link>
 
-                {/* Bottom Section */}
-                <Link 
-                    to="/str" 
+                <Link
+                    to="/str"
                     className="flex-1 relative overflow-hidden group"
                 >
-                    <img 
-                        src="/front-cover-2.png" 
-                        alt="002 STR" 
-                        className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700" 
-                        style={{
-                            transform: `translateY(${scrollY * 0.1}px) scale(1.05)`
-                        }}
+                    <img
+                        src="/front-cover-2.png"
+                        alt="002 STR"
+                        className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
+                        style={{ transform: `translateY(${scrollY * 0.1}px) scale(1.05)` }}
                     />
                     <div className="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition-colors duration-700" />
                 </Link>

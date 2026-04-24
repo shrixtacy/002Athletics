@@ -33,7 +33,7 @@ const FeaturedProducts = () => {
   const { ref: gridRef, isVisible: gridVisible } = useScrollAnimation(0.1);
 
   return (
-    <section id="paddles" className="py-24 bg-background">
+    <section id="paddles" className="py-12 md:py-24 bg-background">
       <div className="container mx-auto px-6">
         {/* Section Header */}
         <div 

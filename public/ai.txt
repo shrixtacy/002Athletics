@@ -1,0 +1,215 @@
+# AI Crawling Information for 002 Athletics
+
+## Website Overview
+- **Brand Name**: 002 Athletics
+- **Domain**: 002athletics.com
+- **Industry**: Sports Equipment & Pickleball Gear
+- **Primary Focus**: Premium pickleball balls and equipment
+- **Target Audience**: Professional and amateur pickleball players seeking high-quality equipment
+
+## Company Information
+- **Mission**: Providing professional-grade pickleball equipment designed for players who demand excellence
+- **Values**: Quality, Performance, Innovation, Durability
+- **Established**: 2024
+- **Location**: India
+- **Customer Base**: 50,000+ players worldwide
+- **Customer Rating**: 4.9/5.0 stars
+- **Customer Satisfaction**: 100%
+
+## Product Catalog
+
+### 002 PRE Pickleball Ball
+- **Product ID**: 1
+- **Category**: Training Ball
+- **Price**: ₹150 INR
+- **Rating**: 4.9/5 (128 reviews)
+- **Status**: Available
+- **URL**: /pre or /product/1
+- **Description**: Engineered for durability and precision. Designed for players who demand consistent performance, the PRE ball delivers reliable flight, true bounce, and long-lasting resilience across every surface.
+- **Key Features**:
+  - Premium Material: High durability polymer material engineered to withstand intense play
+  - Optimized Flight: Precision-drilled holes and aerodynamic design for true, predictable flight paths
+  - Optimized Durability: Built to last through countless rallies without losing shape or bounce
+- **Use Cases**: Training, practice sessions, drilling, recreational play
+- **Target Users**: Beginners to intermediate players, training facilities, clubs
+- **Images**: 
+  - /pre-sports-ad-poster.png (main product image)
+  - /pre-slot-1.png (premium material feature)
+  - /pre-slot-2.png (optimized flight feature)
+  - /pre-slot-3.png (durability feature)
+
+### 002 STR Pickleball Ball
+- **Product ID**: 2
+- **Category**: Professional Ball
+- **Price**: ₹130 INR
+- **Rating**: 4.8/5 (64 reviews)
+- **Badge**: Best Seller
+- **Status**: Available
+- **URL**: /str or /product/2
+- **Description**: Built for speed and competitive edge. Engineered with advanced polymer technology, the STR ball offers exceptional responsiveness, tight spin control, and a lively bounce that keeps the game fast and exciting.
+- **Key Features**:
+  - Precise Control: Engineered for pinpoint accuracy and consistent shot placement
+  - Durability Enhanced: Built to endure intense rallies without compromising performance
+  - Optimal Weight: Perfectly balanced for maximum swing speed and effortless court coverage
+- **Use Cases**: Competitive play, tournaments, professional matches, advanced training
+- **Target Users**: Intermediate to professional players, competitive athletes, tournament organizers
+- **Images**: 
+  - /str-sports-ad-poster.png (main product image)
+  - /str-slot-1.png (precise control feature)
+  - /str-slot-2.png (durability feature)
+  - /002 str ball slot 2.png (alternative product image)
+  - /str-slot-3.png (optimal weight feature)
+
+### Upcoming Products
+1. **Genesis Series Edition** (Product ID: 3)
+   - Category: Exclusive Collection
+   - Status: Coming Soon
+   - Image: /upcoming-1.png
+
+2. **Court Signature Gear** (Product ID: 4)
+   - Category: Apparel
+   - Status: Coming Soon
+   - Image: /upcoming-2.png
+
+3. **Pro Tour Prototype** (Product ID: 5)
+   - Category: Equipment
+   - Status: Coming Soon
+   - Image: /upcoming-3.png
+
+## Website Structure
+
+### Main Pages
+1. **Homepage** (/)
+   - Hero carousel with product showcases
+   - Featured products section
+   - Marquee section
+   - Upcoming products preview
+   - Features section
+   - Categories section
+   - Testimonials
+   - Newsletter signup
+   - Full-screen loading animation with logo intro
+
+2. **Shop** (/shop)
+   - Complete product catalog
+   - Available products grid
+   - Upcoming products section
+   - Product filtering and browsing
+
+3. **Product Pages**
+   - 002 PRE Detail Page (/pre)
+   - 002 STR Detail Page (/str)
+   - Individual Product Pages (/product/:id)
+
+4. **Shopping Cart** (/cart)
+   - Cart management
+   - Checkout process
+
+5. **404 Not Found** (/404)
+   - Custom error page
+
+## Key Features & Technologies
+
+### User Experience
+- Smooth scroll animations
+- Custom cursor interactions
+- Loading screen with video intro
+- Parallax effects on hero section
+- Mobile-responsive carousel
+- Touch swipe support for mobile
+- Hover effects and transitions
+- Product image zoom on hover
+
+### Design Elements
+- Modern minimalist aesthetic
+- High-quality product photography
+- Typography: Display font for headings, body font for content
+- Color scheme: Beige, black, white with accent colors
+- Mobile-first responsive design
+
+### Technical Stack
+- React with TypeScript
+- Vite build tool
+- Tailwind CSS for styling
+- React Router for navigation
+- Shadcn UI components
+- Framer Motion for animations
+
+## SEO Keywords
+- Pickleball balls
+- Professional pickleball equipment
+- Premium pickleball gear
+- 002 PRE ball
+- 002 STR ball
+- Training pickleball balls
+- Competition pickleball balls
+- Durable pickleball balls
+- High-performance pickleball
+- Pickleball accessories
+- Sports equipment India
+- Pickleball shop online
+- Best pickleball balls 2026
+
+## Content Sections
+
+### Testimonials
+- Customer reviews and ratings
+- User experiences
+- Performance feedback
+
+### Features Highlights
+- Premium materials and construction
+- Advanced engineering
+- Professional-grade quality
+- Durability and longevity
+- Performance optimization
+
+### Newsletter
+- Email subscription for updates
+- New product announcements
+- Exclusive offers and promotions
+
+## Contact & Social
+- Newsletter signup available on homepage
+- Footer contains company information
+- Social media integration
+
+## Mobile Experience
+- Full mobile optimization
+- Touch-friendly navigation
+- Swipeable product carousel
+- Responsive images and layouts
+- Mobile-specific hero section with auto-scrolling carousel
+
+## Brand Assets
+- Logo: /002-logo.png, /white-002-logo.png
+- Favicon: /favicon.png
+- Video assets: /logo-intro.mp4, /buffering.mp4
+- Hero images: /front-cover-1.png, /front-cover-2.png
+- Mobile hero images: /mobile-hero-1.png, /mobile-hero-2.png, /mobile-hero-3.png
+
+## Crawling Instructions
+- All pages are crawlable
+- Images include descriptive alt text
+- Semantic HTML structure
+- Sitemap available at /sitemap.xml
+- Robots.txt allows all crawlers
+- Dynamic routing via React Router
+- Client-side rendering with SEO optimization
+
+## Update Frequency
+- Product pages: Weekly updates
+- Shop page: Daily updates for inventory
+- Homepage: Weekly content updates
+- Blog/News: As published
+- Upcoming products: Monthly updates
+
+## Legal & Policies
+- All product information is accurate as of last update
+- Prices in Indian Rupees (INR)
+- Shipping and returns information available
+- Customer service contact available
+
+---
+Last Updated: April 25, 2026
+Version: 1.0

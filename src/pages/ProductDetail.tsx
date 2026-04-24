@@ -112,7 +112,7 @@ const ProductDetail = () => {
         <Navbar />
         
         <main className="flex-grow pt-32 pb-24">
-          <div className="container mx-auto px-6">
+          <div className="container mx-auto px-4 md:px-6 max-w-7xl overflow-hidden">
             
             {/* Breadcrumb */}
             <div className="text-sm font-body text-muted-foreground mb-8">
@@ -123,15 +123,15 @@ const ProductDetail = () => {
               <span className="text-foreground">{product.name}</span>
             </div>
 
-            <div className="grid md:grid-cols-2 gap-12 lg:gap-24">
+            <div className="grid md:grid-cols-2 gap-8 lg:gap-12 xl:gap-24">
               
               {/* Product Images (Scrollable / Selectable) */}
-              <div className="flex flex-col-reverse lg:flex-row gap-6">
-                <div className="flex lg:flex-col gap-4 overflow-x-auto lg:overflow-y-auto lg:w-24 pb-4 lg:pb-0 scrollbar-hide">
+              <div className="flex flex-col-reverse lg:flex-row gap-4 lg:gap-6 w-full">
+                <div className="flex lg:flex-col gap-3 lg:gap-4 overflow-x-auto lg:overflow-y-auto lg:w-20 xl:w-24 pb-2 lg:pb-0 scrollbar-hide">
                   {product.images.map((img, idx) => (
                     <button 
                       key={idx} 
-                      className={`flex-shrink-0 w-20 h-24 lg:w-24 lg:h-32 border-2 ${activeImage === idx ? 'border-primary' : 'border-border'} overflow-hidden rounded bg-secondary transition-all`}
+                      className={`flex-shrink-0 w-16 h-20 lg:w-20 lg:h-28 xl:w-24 xl:h-32 border-2 ${activeImage === idx ? 'border-primary' : 'border-border'} overflow-hidden rounded bg-secondary transition-all`}
                       onClick={() => setActiveImage(idx)}
                     >
                       <img src={img} alt={`${product.name} angle ${idx + 1}`} className="w-full h-full object-cover" />
@@ -139,7 +139,7 @@ const ProductDetail = () => {
                   ))}
                 </div>
                 
-                <div className="flex-1 aspect-square bg-secondary rounded overflow-hidden relative border border-border">
+                <div className="flex-1 w-full aspect-square bg-secondary rounded overflow-hidden relative border border-border">
                   <img 
                     src={product.images[activeImage]} 
                     alt={product.name} 

@@ -53,30 +53,37 @@ const HeroParallax = () => {
 
             {/* Mobile: carousel with images */}
             <div 
-                className="md:hidden relative w-full h-auto overflow-hidden"
+                className="md:hidden relative w-full overflow-hidden"
                 onTouchStart={handleTouchStart}
                 onTouchMove={handleTouchMove}
                 onTouchEnd={handleTouchEnd}
             >
                 <div 
-                    className="flex transition-transform duration-700 ease-in-out h-full"
+                    className="flex transition-transform duration-700 ease-in-out"
                     style={{ transform: `translateX(-${currentSlide * 100}%)` }}
                 >
-                    {/* Slide 1: PRE */}
-                    <Link to="/pre" className="min-w-full h-full flex items-center justify-center bg-black">
-                        <img 
-                            src="/pre-slot-1.png" 
-                            alt="002 PRE" 
-                            className="w-full h-auto object-contain"
-                        />
+                    {/* Slide 1: PRE - cropped to match STR height */}
+                    <Link to="/pre" className="min-w-full flex items-center justify-center bg-black">
+                        <div className="w-full overflow-hidden">
+                            <img 
+                                src="/pre-slot-1.png" 
+                                alt="002 PRE" 
+                                className="w-full h-auto object-cover object-top"
+                                style={{ 
+                                    maxHeight: '95vh',
+                                    objectFit: 'cover'
+                                }}
+                            />
+                        </div>
                     </Link>
 
                     {/* Slide 2: STR - use new image */}
-                    <Link to="/str" className="min-w-full h-full flex items-center justify-center bg-black">
+                    <Link to="/str" className="min-w-full flex items-center justify-center bg-black">
                         <img 
                             src="/002 str ball slot 2.png" 
                             alt="002 STR" 
                             className="w-full h-auto object-contain"
+                            style={{ maxHeight: '95vh' }}
                         />
                     </Link>
                 </div>

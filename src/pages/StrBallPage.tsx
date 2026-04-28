@@ -11,7 +11,7 @@ const features = [
     description: 'Engineered for pinpoint accuracy, delivering consistent shot placement every time.',
   },
   {
-    image: '/str-slot-2.png',
+    image: '/002 str ball slot 2.png',
     title: 'Durability Enhanced',
     description: 'Built to endure the most intense rallies without compromising performance.',
   },

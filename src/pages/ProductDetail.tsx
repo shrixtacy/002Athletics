@@ -30,7 +30,7 @@ const allProducts: Product[] = [
     name: '002 PRE',
     category: 'Training',
     price: 150,
-    images: ['/pre-balls-detail-1.png', '/pre-balls-detail-2.png', '/pre-balls-detail-3.png'],
+    images: ['/pre-balls-detail-main.png', '/pre-balls-detail-1.png', '/pre-balls-detail-2.png', '/pre-balls-detail-3.png'],
     description: 'Designed for professional tournament play, these pickleballs engineered for maximum durability and a consistent bounce. Tested rigorously on outdoor courts to withstand aggressive play while maintaining their true flight path.',
     features: [
       'Approved for official tournament play',
@@ -46,7 +46,7 @@ const allProducts: Product[] = [
     name: '002 STR',
     category: 'Professional',
     price: 130,
-    images: ['/str-balls-detail-1.png', '/str-balls-detail-2.png', '/str-balls-detail-3.png'],
+    images: ['/str-balls-detail-main.png', '/str-balls-detail-1.png', '/str-balls-detail-2.png', '/str-balls-detail-3.png'],
     description: 'The perfect ball for drills, practice sessions, and recreational games. Built specifically to offer slightly more bounce forgiveness while retaining the authentic feel of a match ball. Great for extended practice sessions.',
     features: [
       'Extended durability for repeated drills',

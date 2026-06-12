@@ -145,7 +145,7 @@ const ProductDetail = () => {
                   {product.images.map((img, idx) => (
                     <button 
                       key={idx} 
-                      className={`flex-shrink-0 w-16 lg:w-20 xl:w-24 border-2 ${activeImage === idx ? 'border-primary' : 'border-border'} overflow-hidden rounded bg-secondary transition-all`}
+                      className={`flex-shrink-0 w-16 lg:w-20 xl:w-24 border-2 ${activeImage === idx ? 'border-primary' : 'border-transparent'} overflow-hidden rounded bg-white transition-all flex items-center justify-center`}
                       onClick={() => setActiveImage(idx)}
                     >
                       <img src={img} alt={`${product.name} angle ${idx + 1}`} className="w-full h-auto block object-contain" />
@@ -153,7 +153,7 @@ const ProductDetail = () => {
                   ))}
                 </div>
                 
-                <div className="flex-1 w-full bg-secondary rounded overflow-hidden relative border border-border">
+                <div className="flex-1 w-full bg-white rounded overflow-hidden relative flex items-center justify-center">
                   <img 
                     src={product.images[activeImage]} 
                     alt={product.name} 
@@ -313,7 +313,7 @@ const ProductDetail = () => {
                 <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 justify-center">
                   {relatedProducts.map((p) => (
                     <Link to={`/product/${p.id}`} key={p.id} className="group relative bg-card hover-lift max-w-sm mx-auto w-full">
-                      <div className="relative overflow-hidden bg-secondary aspect-square">
+                      <div className="relative overflow-hidden bg-white aspect-square">
                         <img
                           src={p.images[0]}
                           alt={p.name}

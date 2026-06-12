@@ -26,7 +26,9 @@ const Cart = () => {
 
   const handleCheckout = () => {
     setOrderComplete(true);
-    // In a real app, you would send this to a server
+    const message = `*New Order Request*\n\n*Name:* ${formData.name}\n*Phone:* ${formData.number}\n*Email:* ${formData.email}\n*Address:* ${formData.address}\n\n*Order Details:*\n${items.map(item => `- ${item.quantity}x ${item.name} (₹${item.price})`).join('\n')}\n\n*Total:* ₹${cartTotal}`;
+    const encodedMessage = encodeURIComponent(message);
+    window.open(`https://wa.me/919437026844?text=${encodedMessage}`, '_blank');
   };
 
   return (
@@ -67,7 +69,7 @@ const Cart = () => {
                       </div>
                       <div className="flex-1 flex flex-col justify-center">
                         <div>
-                          <h3 className="font-display text-xl sm:text-2xl leading-tight mb-2 pr-6">{item.name}</h3>
+                          <h3 className="font-body font-semibold text-xl sm:text-2xl leading-tight mb-2 pr-6">{item.name}</h3>
                         </div>
                         <div className="flex justify-between items-end sm:items-center mt-2 flex-col sm:flex-row gap-4 sm:gap-0">
                           
@@ -89,7 +91,7 @@ const Cart = () => {
                           </div>
                           
                           <div className="flex items-center gap-6 self-end sm:self-auto">
-                            <span className="font-display text-xl sm:text-2xl">${item.price * item.quantity}</span>
+                            <span className="font-body font-medium text-xl sm:text-2xl">₹{item.price * item.quantity}</span>
                             <button onClick={() => removeItem(item.id)} className="text-muted-foreground w-8 h-8 flex items-center justify-center rounded-full hover:bg-secondary transition-colors" title="Remove Item">
                               <Trash2 size={18} />
                             </button>
@@ -107,13 +109,13 @@ const Cart = () => {
                 </div>
 
                 <div className="bg-card border border-border p-8 rounded-lg shadow-sm h-fit">
-                  <h3 className="font-display text-2xl mb-8 flex justify-between border-b border-border pb-4">
+                  <h3 className="font-body font-medium text-2xl mb-8 flex justify-between border-b border-border pb-4">
                     <span>Total</span>
-                    <span>${cartTotal}</span>
+                    <span>₹{cartTotal}</span>
                   </h3>
 
                   {!isCheckingOut ? (
-                    <Button className="w-full h-14 text-lg" onClick={() => setIsCheckingOut(true)}>
+                    <Button className="w-full h-14 text-sm sm:text-base whitespace-normal leading-tight px-2" onClick={() => setIsCheckingOut(true)}>
                       Proceed to Checkout
                     </Button>
                   ) : (
@@ -126,7 +128,7 @@ const Cart = () => {
                           <ChevronLeft size={14} /> Back
                         </button>
                       </div>
-                      <h4 className="font-display text-xl">Checkout Details</h4>
+                      <h4 className="font-body font-medium text-xl">Checkout Details</h4>
                       <input
                         type="text"
                         name="name"
@@ -161,7 +163,7 @@ const Cart = () => {
                       />
                       
                       {isFormValid ? (
-                        <Button className="w-full h-14 text-lg mt-2 bg-green-600 hover:bg-green-700 text-white shadow-lg" onClick={handleCheckout}>
+                        <Button className="w-full h-14 text-sm sm:text-base whitespace-normal leading-tight px-2 mt-2 bg-green-600 hover:bg-green-700 text-white shadow-lg" onClick={handleCheckout}>
                           Complete Order
                         </Button>
                       ) : (

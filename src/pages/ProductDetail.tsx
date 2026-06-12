@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useNavigate } from 'react-router-dom';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import SmoothScroll from '@/components/SmoothScroll';
@@ -7,17 +7,30 @@ import CustomCursor from '@/components/CustomCursor';
 import { Button } from '@/components/ui/button';
 import { ShoppingCart, Star, Check } from 'lucide-react';
 import { useCart } from '@/lib/CartContext';
-import ballPreAd from '@/assets/ball-pre-ad.png';
-import ballStrAd from '@/assets/ball-str-ad.png';
+import { toast } from 'sonner';
+
+interface Product {
+  id: number;
+  name: string;
+  category: string;
+  price?: number;
+  originalPrice?: number;
+  images: string[];
+  description: string;
+  features: string[];
+  rating?: number;
+  reviews?: number;
+  upcoming?: boolean;
+}
 
 // Mock data base matching FeaturedProducts
-const allProducts = [
+const allProducts: Product[] = [
   {
     id: 1,
     name: '002 PRE',
     category: 'Training',
     price: 150,
-    images: [ballPreAd, '/pre-sports-ad-poster.png', ballStrAd, ballPreAd],
+    images: ['/pre-balls-detail-1.png', '/pre-balls-detail-2.png', '/pre-balls-detail-3.png'],
     description: 'Designed for professional tournament play, these pickleballs engineered for maximum durability and a consistent bounce. Tested rigorously on outdoor courts to withstand aggressive play while maintaining their true flight path.',
     features: [
       'Approved for official tournament play',
@@ -33,7 +46,7 @@ const allProducts = [
     name: '002 STR',
     category: 'Professional',
     price: 130,
-    images: [ballStrAd, '/str-sports-ad-poster.png', ballPreAd, ballStrAd],
+    images: ['/str-balls-detail-1.png', '/str-balls-detail-2.png', '/str-balls-detail-3.png'],
     description: 'The perfect ball for drills, practice sessions, and recreational games. Built specifically to offer slightly more bounce forgiveness while retaining the authentic feel of a match ball. Great for extended practice sessions.',
     features: [
       'Extended durability for repeated drills',
@@ -90,6 +103,7 @@ const allProducts = [
 
 const ProductDetail = () => {
   const { id } = useParams();
+  const navigate = useNavigate();
   const { items, addItem, removeItem, updateQuantity } = useCart();
   const [activeImage, setActiveImage] = useState(0);
   
@@ -131,19 +145,19 @@ const ProductDetail = () => {
                   {product.images.map((img, idx) => (
                     <button 
                       key={idx} 
-                      className={`flex-shrink-0 w-16 h-20 lg:w-20 lg:h-28 xl:w-24 xl:h-32 border-2 ${activeImage === idx ? 'border-primary' : 'border-border'} overflow-hidden rounded bg-secondary transition-all`}
+                      className={`flex-shrink-0 w-16 lg:w-20 xl:w-24 border-2 ${activeImage === idx ? 'border-primary' : 'border-border'} overflow-hidden rounded bg-secondary transition-all`}
                       onClick={() => setActiveImage(idx)}
                     >
-                      <img src={img} alt={`${product.name} angle ${idx + 1}`} className="w-full h-full object-cover" />
+                      <img src={img} alt={`${product.name} angle ${idx + 1}`} className="w-full h-auto block object-contain" />
                     </button>
                   ))}
                 </div>
                 
-                <div className="flex-1 w-full aspect-square bg-secondary rounded overflow-hidden relative border border-border">
+                <div className="flex-1 w-full bg-secondary rounded overflow-hidden relative border border-border">
                   <img 
                     src={product.images[activeImage]} 
                     alt={product.name} 
-                    className="w-full h-full object-cover animate-fade-in"
+                    className="w-full h-auto block object-contain animate-fade-in"
                   />
                 </div>
               </div>
@@ -219,13 +233,23 @@ const ProductDetail = () => {
                       {!isInCart ? (
                         <Button 
                           className="w-full h-14 text-lg gap-3 transition-all hover:scale-[1.02]"
-                          onClick={() => addItem({
-                            id: product.id,
-                            name: product.name,
-                            price: product.price,
-                            image: product.images[0],
-                            quantity: 1
-                          })}
+                          onClick={() => {
+                            addItem({
+                              id: product.id,
+                              name: product.name,
+                              price: product.price as number,
+                              image: product.images[0],
+                              quantity: 1
+                            });
+                            toast.success(`${product.name} added to your cart`, {
+                              action: {
+                                label: 'View Cart',
+                                onClick: () => navigate('/cart')
+                              },
+                              duration: Infinity,
+                              position: 'bottom-right'
+                            });
+                          }}
                         >
                           <ShoppingCart size={20} />
                           Add to Cart
